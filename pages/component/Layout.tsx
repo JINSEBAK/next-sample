@@ -25,6 +25,7 @@ const getTransitionStyles = {
   },
 };
 
+// Transition 동작이 현재 굉장히 이상함
 function Layout({ children }) {
   const router = useRouter();
   return (
