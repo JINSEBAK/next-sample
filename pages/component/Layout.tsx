@@ -30,7 +30,8 @@ function Layout({ children }) {
   return (
     <Fragment>
       <Header bgColor={""} />
-      <TransitionGroup style={{ position: "relative" }}>
+      {children}
+      {/* <TransitionGroup style={{ position: "relative" }}>
         <Transition key={router.pathname} timeout={500}>
           {(status) => (
             <div
@@ -41,7 +42,7 @@ function Layout({ children }) {
             </div>
           )}
         </Transition>
-      </TransitionGroup>
+      </TransitionGroup> */}
       <Navigation />
     </Fragment>
   );

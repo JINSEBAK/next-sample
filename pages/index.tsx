@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <>
-      <div>
+      <div className="main">
         {/* <Image src={imageUrl} alt="Floating Cat" /> */}
         <input type="file" multiple />
       </div>
