@@ -15,7 +15,7 @@ function Search() {
   };
 
   return (
-    <div>
+    <div className="main main-b">
       <h4>SEACRH</h4>
       <div>
         <input type="text" />

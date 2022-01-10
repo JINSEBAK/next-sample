@@ -28,6 +28,11 @@ li {
   padding-bottom: 80px;
 }
 
+.main-b {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 nav ul {
   display: flex;
 }
