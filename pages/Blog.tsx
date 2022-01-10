@@ -13,7 +13,7 @@ function Blog({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   };
 
   return (
-    <div>
+    <div className="main">
       <h3 className={styles.welcome}>About</h3>
       <Button primary onClick={onClickHandle}>
         포스트 보기

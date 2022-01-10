@@ -13,9 +13,21 @@ const StyleButton = styled.button`
       background-color: navy;
       border-color: navy;
     `}
+  ${(props) =>
+    props.text &&
+    css`
+      font-size: 12px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      opacity: 0.5;
+    `}
 `;
 
-function Button<Props>({ children, ...props }) {
+interface ButtonProps {
+  name: string;
+}
+function Button<props>({ children, ...props }) {
   return <StyleButton {...props}>{children}</StyleButton>;
 }
 

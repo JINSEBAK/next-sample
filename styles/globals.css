@@ -23,6 +23,16 @@ li {
   padding: 0;
 }
 
+.main {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.main-b {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 nav ul {
   display: flex;
 }
@@ -42,8 +52,8 @@ nav ul li a {
 }
 
 .container {
-  padding: 16px 16px 50px 16px;
-  min-height: 660px;
+  padding: 80px 0px 50px 0px;
+  min-height: 860px;
 }
 
 .selectable {
@@ -57,4 +67,237 @@ nav ul li a {
   position: absolute;
   right: 4px;
   top: 4px;
+}
+
+.float.half {
+  width: 50%;
+}
+
+.float.half + .half {
+  text-align: right;
+}
+
+.float.full {
+  width: 100%;
+}
+
+/* Slide up dialog */
+/* Overlay - dimmed */
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 400ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.ReactModal__Content {
+  bottom: -300px !important;
+  transition: bottom 300ms ease-in;
+}
+
+.ReactModal__Content--after-open {
+  bottom: 0 !important;
+}
+
+.ReactModal__Content--before-close {
+  bottom: -300px !important;
+}
+
+.modal-tick {
+  display: block;
+  width: 40px;
+  height: 6px;
+  border-radius: 24px;
+  background-color: #666;
+  margin: 0 auto;
+}
+
+input {
+  padding: 8px;
+  height: 40px;
+  font-size: 16px;
+}
+
+input + button {
+  margin-left: 4px;
+}
+
+.family {
+  text-align: right;
+}
+
+.family ul {
+  float: right;
+  display: flex;
+  flex-direction: row-reverse;
+  align-content: center;
+  width: 0;
+}
+
+.family ul li {
+  margin-left: -24px;
+  transition: all 300ms ease-in-out;
+}
+
+.family.active ul {
+  width: 100%;
+}
+
+.family.active ul li {
+  margin-left: 4px;
+}
+
+.family .my-family {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #888;
+  border-radius: 100%;
+}
+
+.family .my-family:nth-child(1) {
+  background-color: #bbb;
+}
+
+/* Log */
+.log-container {
+  /* border: 1px solid #ccc; */
+}
+
+.log-container .log-header {
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.log-container .log-header .user {
+  display: flex;
+  align-items: center;
+}
+
+.user .user-profile .img {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #bbb;
+  border-radius: 100%;
+  margin-right: 4px;
+  background-color: #f2f3f6;
+}
+
+.user .user-profile span {
+  display: block;
+  font-size: 12px;
+}
+
+.user .user-profile .user-profile-nick {
+  font-weight: bold;
+}
+
+.user .user-profile .user-profile-badge {
+  opacity: 0.6;
+}
+
+.log-media {
+  background-color: #f2f4f6;
+  color: #222;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.log-media:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.log-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 8px;
+  border-top: 1px solid #eee;
+}
+
+.icon-txt-box {
+  display: inline-block;
+}
+
+.icon-txt-box + .icon-txt-box {
+  margin-left: 8px;
+}
+
+.icon-txt-inner {
+  display: flex;
+  align-items: center;
+}
+
+.icon-txt-box .icon + span,
+.icon-txt-box .icon + a {
+  margin-left: 4px;
+  min-width: 8px;
+  font-size: 12px;
+}
+
+.icon-txt-box .icon + a {
+  color: cornflowerblue;
+}
+
+.log-contents {
+  padding: 0 8px;
+  font-size: 13px;
+}
+
+.log-contents .txt {
+  display: inline;
+}
+
+/* icons */
+.icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+}
+
+.icon.like {
+  background-image: url(../public/assets/images/heart_off.png);
+}
+
+.icon.like.on {
+  background-image: url(../public/assets/images/heart_on.png);
+}
+
+.icon.comment {
+  background-image: url(../public/assets/images/comment.png);
+}
+
+.icon.bookmark {
+  background-image: url(../public/assets/images/bookmark_off.png);
+}
+
+.icon.bookmark.on {
+  background-image: url(../public/assets/images/bookmark_on.png);
+}
+
+.icon.more {
+  background-image: url(../public/assets/images/more.png);
+}
+
+.icon.marker {
+  background-image: url(../public/assets/images/marker.png);
 }
