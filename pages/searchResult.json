@@ -1,0 +1,24 @@
+{
+  "lists": [
+    {
+      "type": "place",
+      "name": "연예인애견카페"
+    },
+    {
+      "type": "hashtag",
+      "name": "연예인추천간식"
+    },
+    {
+      "type": "shop",
+      "name": "연예인펫캐리어"
+    },
+    {
+      "type": "family",
+      "name": "연예인친동생"
+    },
+    {
+      "type": "atsign",
+      "name": "연예인집사"
+    }
+  ]
+}

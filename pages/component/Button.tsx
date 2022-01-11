@@ -22,10 +22,18 @@ const StyleButton = styled.button`
       border: none;
       opacity: 0.5;
     `}
+  ${(props) =>
+    props.icon &&
+    css`
+      padding: 4px;
+      line-height: 0;
+    `}
 `;
 
 interface ButtonProps {
   name: string;
+  children?: JSX.Element;
+  onClick?: () => void;
 }
 function Button<props>({ children, ...props }) {
   return <StyleButton {...props}>{children}</StyleButton>;

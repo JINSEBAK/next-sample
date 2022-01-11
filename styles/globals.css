@@ -24,11 +24,12 @@ li {
 }
 
 .main {
-  padding-top: 80px;
+  padding-top: 0;
   padding-bottom: 80px;
 }
 
 .main-b {
+  padding-top: 80px;
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -170,6 +171,7 @@ input + button {
 /* Log */
 .log-container {
   /* border: 1px solid #ccc; */
+  margin-bottom: 24px;
 }
 
 .log-container .log-header {
@@ -264,6 +266,39 @@ input + button {
   display: inline;
 }
 
+.header-search .inner input {
+  flex: 1;
+  margin: 0 8px;
+}
+
+.header-search .inner input::placeholder {
+  font-size: 80%;
+}
+
+.highlighter {
+  color: coral !important;
+}
+
+.list-srch-res li {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.list-srch-res li .title {
+  margin: 0 8px;
+}
+
+.list-srch-res li button {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+}
+
+.list-srch-res li button .icon {
+  background-size: 50%;
+}
+
 /* icons */
 .icon {
   width: 20px;
@@ -300,4 +335,32 @@ input + button {
 
 .icon.marker {
   background-image: url(../public/assets/images/marker.png);
+}
+
+.icon.back {
+  background-image: url(../public/assets/images/btn_top_back.png);
+}
+
+.icon.place {
+  background-image: url(../public/assets/images/marker.png);
+}
+
+.icon.hashtag {
+  background-image: url(../public/assets/images/hashtag.png);
+}
+
+.icon.shop {
+  background-image: url(../public/assets/images/shop.png);
+}
+
+.icon.family {
+  background-image: url(../public/assets/images/family.png);
+}
+
+.icon.atsign {
+  background-image: url(../public/assets/images/atsign.png);
+}
+
+.icon.delete {
+  background-image: url(../public/assets/images/delete.png);
 }

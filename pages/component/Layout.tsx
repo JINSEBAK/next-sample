@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, useLayoutEffect } from "react";
 import Header from "./Header";
 import Navigation from "./Navigation";
 import { useEffect, Fragment } from "react";
@@ -27,9 +27,11 @@ const getTransitionStyles = {
 
 function Layout({ children }) {
   const router = useRouter();
+  console.log(router);
+
   return (
     <Fragment>
-      <Header bgColor={""} />
+      {/* <Header bgColor={""} /> */}
       {children}
       {/* <TransitionGroup style={{ position: "relative" }}>
         <Transition key={router.pathname} timeout={500}>
