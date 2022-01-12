@@ -43,6 +43,10 @@ nav ul li {
   text-align: center;
 }
 
+nav ul li.active {
+  background-color: #2c9878;
+}
+
 nav ul li a {
   display: block;
   padding: 16px 0;
@@ -171,7 +175,7 @@ input + button {
 /* Log */
 .log-container {
   /* border: 1px solid #ccc; */
-  margin-bottom: 24px;
+  margin: 8px 0 24px 0;
 }
 
 .log-container .log-header {
@@ -264,6 +268,101 @@ input + button {
 
 .log-contents .txt {
   display: inline;
+}
+
+.header.sticky {
+  position: sticky;
+  background-color: gray;
+  height: 30px;
+}
+
+.header button {
+  position: relative;
+}
+
+.header button .num {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  display: block;
+  font-size: 75%;
+  color: #fff;
+  background-color: #2c9878;
+  border-radius: 20px;
+  text-align: center;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 6px;
+  z-index: 100;
+}
+
+.header button + button {
+  margin-left: 8px;
+}
+
+.discover {
+  position: relative;
+  font-size: 14px;
+}
+
+.discover.sticky {
+  position: sticky !important;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  z-index: 100;
+}
+
+.discover ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+}
+
+.discover ul li.active {
+  font-weight: bold;
+}
+
+.recommend {
+  position: relative;
+  white-space: nowrap;
+  overflow-x: auto;
+  padding: 8px;
+}
+
+.recommend ul {
+  font-size: 0;
+}
+
+.recommend ul li {
+  display: inline-block;
+}
+
+.rf-box {
+  text-align: center;
+  max-width: 50px;
+  margin: 8px;
+}
+
+.rf-box .photo {
+  width: 36px;
+  height: 36px;
+  background-color: #f2f3f6;
+  border-radius: 100%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+}
+
+.rf-box .name {
+  font-size: 12px;
+  color: #666;
+  display: block;
+  margin-top: 4px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .header-search .inner input {
@@ -363,4 +462,16 @@ input + button {
 
 .icon.delete {
   background-image: url(../public/assets/images/delete.png);
+}
+
+.icon.search {
+  background-image: url(../public/assets/images/search.png);
+}
+
+.icon.cart {
+  background-image: url(../public/assets/images/cart.png);
+}
+
+.icon.notification {
+  background-image: url(../public/assets/images/notification.png);
 }

@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import Notification from "./Notification";
+import classNames from "classnames";
+import DiscoverCategory from "./DiscoverCategory";
 
 const StyledHeader = styled.div`
   width: 100%;
   background-color: ${(prop) => prop.bgColor || "#fff"};
   color: #222;
   padding: 0 16px;
-  height: 164px;
+  height: 64px;
   box-shadow: 0 0px 1px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
@@ -19,14 +21,18 @@ const StyledHeader = styled.div`
 
 interface HeaderProps {
   bgColor?: string;
+  scrollTop?: number;
 }
 
-const Header = ({ bgColor }: HeaderProps) => {
+const Header = ({ bgColor, scrollTop }: HeaderProps) => {
   return (
-    <StyledHeader bgColor={bgColor} className="header">
-      <a>BI</a>
-      <Notification />
-    </StyledHeader>
+    <>
+      <StyledHeader bgColor={bgColor} className="header">
+        <a>BI</a>
+        <Notification />
+      </StyledHeader>
+      <DiscoverCategory scrollTop={scrollTop} />
+    </>
   );
 };
 

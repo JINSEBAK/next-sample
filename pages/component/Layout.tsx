@@ -45,7 +45,7 @@ function Layout({ children }) {
           )}
         </Transition>
       </TransitionGroup> */}
-      <Navigation />
+      <Navigation page={router.pathname} />
     </Fragment>
   );
 }
