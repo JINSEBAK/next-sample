@@ -3,7 +3,7 @@ import {
   LogContainer,
   LogTitle,
   LogMedia,
-  LogInfo,
+  // LogInfo,
   LogContents,
 } from "./LogElements";
 import { useState } from "react";
@@ -23,7 +23,7 @@ const Log = () => {
     <LogContainer>
       <LogTitle isExpand={isExpand} onClickExpand={onClickExpand} />
       <LogMedia />
-      <LogInfo />
+      {/* <LogInfo /> */}
       <LogContents />
     </LogContainer>
   );

@@ -10,19 +10,16 @@ export const LogContainer = ({ children }) => {
 };
 
 interface FamilyBoxProps {
-  key: number | string;
   imgUrl: string;
   name: string;
 }
-export const FamilyBox = ({ key, imgUrl, name }: FamilyBoxProps) => {
+export const FamilyBox = ({ imgUrl, name }: FamilyBoxProps) => {
   return (
-    <li key={key}>
-      <Link href="#">
-        <a>
-          <img src={`/images/${imgUrl}`} alt={`${name}님의 프로필 이미지`} />
-        </a>
-      </Link>
-    </li>
+    <Link href="#">
+      <a>
+        <img src={`/images/${imgUrl}`} alt={`${name}님의 프로필 이미지`} />
+      </a>
+    </Link>
   );
 };
 
@@ -74,7 +71,9 @@ export const LogTitle = ({ isExpand, onClickExpand }: LogTitleProps) => {
         {/* <Button className="fdt_familybox_btn"></Button> */}
         <ul>
           {list.map((item, index) => (
-            <FamilyBox key={index} imgUrl={item.imgUrl} name={item.name} />
+            <li key={index}>
+              <FamilyBox imgUrl={item.imgUrl} name={item.name} />
+            </li>
           ))}
         </ul>
       </div>
@@ -84,10 +83,6 @@ export const LogTitle = ({ isExpand, onClickExpand }: LogTitleProps) => {
 
 export const LogMedia = () => {
   return <div className="log-media">Media</div>;
-};
-
-export const LogInfoWrapper = ({ children }) => {
-  return <div className="log-info">{children}</div>;
 };
 
 interface IconTextBoxProps {
@@ -126,7 +121,7 @@ export const IconTextBox = ({
 };
 
 // 미디어 하단 정보
-export const LogInfo = () => {
+export const LogContents = () => {
   const [isLike, setIsLike] = useState(false);
   const [isBookmark, setIsBookmark] = useState(false);
   const [cntLike, setCntLike] = useState(0);
@@ -143,7 +138,15 @@ export const LogInfo = () => {
   };
 
   return (
-    <LogInfoWrapper>
+    <div className="sec_feed_infobox">
+      <div className="sec_fdi_topbox">
+        <Button className="btn_fdi_favorite">
+          <span>1,363</span>
+        </Button>
+        <Button className="btn_fdi_comment">
+          <span>63</span>
+        </Button>
+      </div>
       <div className="float half">
         <IconTextBox
           name="like"
@@ -168,7 +171,7 @@ export const LogInfo = () => {
           link="/map"
         />
       </div>
-    </LogInfoWrapper>
+    </div>
   );
 };
 
@@ -176,7 +179,7 @@ export const LogContentsWrapper = ({ children }) => {
   return <div className="log-contents">{children}</div>;
 };
 
-export const LogContents = () => {
+export const LogContents2 = () => {
   const longTxt =
     "아이들이 즐겁게 노는 모습을 보니\n매일 매일 힐링되네요.\n플러스!\n따끈한 수제간식도 덤으로 먹을 수 있어\n더 건강해지는 느낌이 들어요.";
 
