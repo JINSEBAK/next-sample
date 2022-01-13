@@ -1,13 +1,13 @@
-import styled, { css } from "styled-components";
 import { useState, useEffect } from "react";
-import classNames from "classnames";
-import LogContainer from "./component/UserLog";
-import Header from "./component/Header";
-import RecommendFriends from "./component/RecommendFriends";
+import { MainContainer, Contents } from "../component/Common/CommonUIElements";
+import Header from "../component/Header";
+import Navigation from "../component/Common/Navigation";
+import LogContainer from "../component/UserLog";
+import RecommendFriends from "../component/RecommendFriends";
 
 const Home = () => {
   const [expand, setExpand] = useState(false);
-  const [list, setList] = useState([1, 2, 3]);
+  const [list, setList] = useState([]);
   const [scrollTop, setScrollTop] = useState(0);
 
   // Document scroll 이벤트
@@ -26,14 +26,14 @@ const Home = () => {
   };
 
   return (
-    <div className="main">
+    <MainContainer>
       <Header scrollTop={scrollTop} />
-
-      <RecommendFriends />
-      {list.map((item, index) => (
-        <LogContainer key={index} />
-      ))}
-    </div>
+      <Contents>
+        <RecommendFriends />
+        <LogContainer />
+      </Contents>
+      <Navigation />
+    </MainContainer>
   );
 };
 

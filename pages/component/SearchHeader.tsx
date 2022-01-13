@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 import Button from "./Button";
 import Icon from "./Icon";
 import { Input } from "./Forms";
@@ -41,9 +42,11 @@ const SearchHeader = ({ onChangeInput, keyword }) => {
           placeholder="검색어를 입력해주세요."
           onChange={onChangeInput}
         />
-        <Button icon>
-          <Icon name="marker" />
-        </Button>
+        <Link href="/map">
+          <a>
+            <Icon name="marker" />
+          </a>
+        </Link>
       </StyledSearchHeaderInner>
     </StyledSearchHeader>
   );

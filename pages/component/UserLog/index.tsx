@@ -1,7 +1,7 @@
 // Log 단건에 대한 컴포넌트
 import {
   LogContainer,
-  LogHeader,
+  LogTitle,
   LogMedia,
   LogInfo,
   LogContents,
@@ -13,12 +13,15 @@ const Log = () => {
 
   // 가족 정보 확장-축소
   const onClickExpand = () => {
-    setIsExpand(!isExpand);
+    // 1회 확장 후 접을 수 없음 (확장 후 클릭 시 화면 이동)
+    if (!isExpand) {
+      setIsExpand(true);
+    }
   };
 
   return (
     <LogContainer>
-      <LogHeader isExpand={isExpand} onClickExpand={onClickExpand} />
+      <LogTitle isExpand={isExpand} onClickExpand={onClickExpand} />
       <LogMedia />
       <LogInfo />
       <LogContents />

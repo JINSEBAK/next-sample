@@ -3,52 +3,82 @@ import styled, { css } from "styled-components";
 import Icon from "../Icon";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Button from "../Button";
+import { Button } from "../Common/CommonUIElements";
 
 export const LogContainer = ({ children }) => {
-  return <div className="log-container">{children}</div>;
+  return <section className="sec_feed_wrap">{children}</section>;
 };
 
-export const LogHeaderWrapper = ({ children }) => {
-  return <div className="log-header">{children}</div>;
+interface FamilyBoxProps {
+  key: number | string;
+  imgUrl: string;
+  name: string;
+}
+export const FamilyBox = ({ key, imgUrl, name }: FamilyBoxProps) => {
+  return (
+    <li key={key}>
+      <Link href="#">
+        <a>
+          <img src={`/images/${imgUrl}`} alt={`${name}님의 프로필 이미지`} />
+        </a>
+      </Link>
+    </li>
+  );
 };
 
-export const MyFamily = ({ color }) => {
-  return <div className="my-family" style={{ backgroundColor: color }} />;
-};
-
-export const LogHeader = ({ isExpand, onClickExpand }) => {
+interface LogTitleProps {
+  isExpand: boolean;
+  onClickExpand: () => void;
+}
+export const LogTitle = ({ isExpand, onClickExpand }: LogTitleProps) => {
   const [list, setList] = useState([
-    "#f1dcfd",
-    "#fdf2dc",
-    "#fddcdc",
-    "#c2c3ff",
+    { id: 1, imgUrl: "test2.jpeg", name: "냥1" },
+    { id: 2, imgUrl: "test3.jpeg", name: "냥2" },
+    { id: 3, imgUrl: "test4.jpeg", name: "냥3" },
+    { id: 4, imgUrl: "test5.jpeg", name: "냥4" },
+    { id: 5, imgUrl: "test2.jpeg", name: "냥5" },
+    { id: 6, imgUrl: "test3.jpeg", name: "냥6" },
+    { id: 7, imgUrl: "test4.jpeg", name: "냥7" },
+    { id: 8, imgUrl: "test5.jpeg", name: "냥8" },
   ]);
 
   return (
-    <LogHeaderWrapper>
-      <div className="user">
-        <div className="user-profile">
-          <div className="img"></div>
-        </div>
-        <div className="user-profile">
-          <span className="user-profile-nick">개장수</span>
-          <span className="user-profile-badge">Badge</span>
-        </div>
-      </div>
+    <div className="sec_feed_titlebox">
+      <Link href="#">
+        <a className="sec_fdt_userbox">
+          <img
+            src="/images/test6.png"
+            alt="아코야 건강하자 님의 프로필 이미지"
+          />
+        </a>
+      </Link>
+      <dl>
+        <dt>아코야 건강하자</dt>
+        <dd>
+          <Link href="#">
+            <a>
+              <img src="/images/inc/icon_map_pin.svg" alt="맵 아이콘" />{" "}
+              까뮤양평타운플레이그라운드
+            </a>
+          </Link>
+        </dd>
+      </dl>
+
       <div
-        className={classNames("family", isExpand && "active")}
+        className={classNames(
+          "sec_fdt_familybox",
+          isExpand && "familybox_active"
+        )}
         onClick={onClickExpand}
       >
+        {/* <Button className="fdt_familybox_btn"></Button> */}
         <ul>
           {list.map((item, index) => (
-            <li key={index}>
-              <MyFamily color={item} />
-            </li>
+            <FamilyBox key={index} imgUrl={item.imgUrl} name={item.name} />
           ))}
         </ul>
       </div>
-    </LogHeaderWrapper>
+    </div>
   );
 };
 
@@ -197,11 +227,11 @@ export const LogContents = () => {
       <div>
         <div>
           <div className="txt" dangerouslySetInnerHTML={getViewTxt()} />
-          {!txtOpen && (
+          {/* {!txtOpen && (
             <Button text onClick={onClickMore}>
               더보기
             </Button>
-          )}
+          )} */}
         </div>
       </div>
     </LogContentsWrapper>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Notification from "./Notification";
-import classNames from "classnames";
 import DiscoverCategory from "./DiscoverCategory";
+import { Button } from "./Common/CommonUIElements";
 
 const StyledHeader = styled.div`
   width: 100%;
@@ -22,16 +22,30 @@ const StyledHeader = styled.div`
 interface HeaderProps {
   bgColor?: string;
   scrollTop?: number;
+  children?: React.ReactNode;
 }
 
 const Header = ({ bgColor, scrollTop }: HeaderProps) => {
   return (
     <>
-      <StyledHeader bgColor={bgColor} className="header">
+      {/* <StyledHeader bgColor={bgColor} className="header">
         <a>BI</a>
         <Notification />
       </StyledHeader>
-      <DiscoverCategory scrollTop={scrollTop} />
+      <DiscoverCategory scrollTop={scrollTop} /> */}
+
+      <header id="header">
+        <h1>
+          <a href="#">MOLLY'S</a>
+        </h1>
+        <div className="hd_btn_wrap">
+          <Button className="btn_hdsearch" content="HD SEARCH" />
+          <Button className="btn_hdcart" content="HD CART">
+            <em>17</em>
+          </Button>
+          <Button className="btn_hdmap" content="HD MAP" />
+        </div>
+      </header>
     </>
   );
 };

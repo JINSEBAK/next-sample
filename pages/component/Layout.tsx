@@ -1,10 +1,8 @@
-import { useState, useCallback, useLayoutEffect } from "react";
-import Header from "./Header";
-import Navigation from "./Navigation";
-import { useEffect, Fragment } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { Transition, TransitionGroup } from "react-transition-group";
-
 import { useRouter } from "next/router";
+import { userAgent, scrollEvent } from "../../lib/utils";
+import Navigation from "./Common/Navigation";
 
 const TIMEOUT = 200;
 const getTransitionStyles = {
@@ -27,13 +25,19 @@ const getTransitionStyles = {
 
 function Layout({ children }) {
   const router = useRouter();
-  console.log(router);
+  const [browser, setBrowser] = useState();
+
+  useEffect(() => {
+    userAgent();
+    scrollEvent();
+  }, []);
 
   return (
     <Fragment>
-      {/* <Header bgColor={""} /> */}
-      {children}
-      {/* <TransitionGroup style={{ position: "relative" }}>
+      <article className="pullto">
+        {/* <Header bgColor={""} /> */}
+        {children}
+        {/* <TransitionGroup style={{ position: "relative" }}>
         <Transition key={router.pathname} timeout={500}>
           {(status) => (
             <div
@@ -45,7 +49,7 @@ function Layout({ children }) {
           )}
         </Transition>
       </TransitionGroup> */}
-      <Navigation page={router.pathname} />
+      </article>
     </Fragment>
   );
 }

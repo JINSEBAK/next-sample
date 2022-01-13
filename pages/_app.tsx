@@ -15,9 +15,20 @@
  * 각 컴포넌트별로 CSS 생성하고 싶을 때는 [name].module.css
  */
 import "../styles/globals.css";
+
+// CSS import
+import "../styles/reset.css";
+// import "../styles/font.css";
+// import "../styles/common.css";
+import "../styles/style.css";
+
 import Layout from "./component/Layout";
+import { useEffect } from "react";
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    console.log(pageProps);
+  }, []);
   return (
     <Layout>
       <Component {...pageProps} />
