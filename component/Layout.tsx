@@ -1,7 +1,7 @@
 import { useEffect, useState, Fragment } from "react";
 import { Transition, TransitionGroup } from "react-transition-group";
 import { useRouter } from "next/router";
-import { userAgent, scrollEvent } from "../../lib/utils";
+import { userAgent, scrollEvent } from "../lib/utils";
 import Navigation from "./Common/Navigation";
 
 const TIMEOUT = 200;

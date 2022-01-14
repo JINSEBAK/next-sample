@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import Icon from "../Icon";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Button } from "../Common/CommonUIElements";
+import { Button } from "../Common/BasicUIElements";
 
 export const LogContainer = ({ children }) => {
   return <section className="sec_feed_wrap">{children}</section>;
@@ -25,37 +25,39 @@ export const FamilyBox = ({ imgUrl, name }: FamilyBoxProps) => {
 
 interface LogTitleProps {
   isExpand: boolean;
+  userInfo: any;
+  logInfo: any;
   onClickExpand: () => void;
 }
-export const LogTitle = ({ isExpand, onClickExpand }: LogTitleProps) => {
-  const [list, setList] = useState([
-    { id: 1, imgUrl: "test2.jpeg", name: "냥1" },
-    { id: 2, imgUrl: "test3.jpeg", name: "냥2" },
-    { id: 3, imgUrl: "test4.jpeg", name: "냥3" },
-    { id: 4, imgUrl: "test5.jpeg", name: "냥4" },
-    { id: 5, imgUrl: "test2.jpeg", name: "냥5" },
-    { id: 6, imgUrl: "test3.jpeg", name: "냥6" },
-    { id: 7, imgUrl: "test4.jpeg", name: "냥7" },
-    { id: 8, imgUrl: "test5.jpeg", name: "냥8" },
-  ]);
-
+export const LogTitle = ({
+  userInfo,
+  logInfo,
+  isExpand,
+  onClickExpand,
+}: LogTitleProps) => {
   return (
     <div className="sec_feed_titlebox">
       <Link href="#">
         <a className="sec_fdt_userbox">
           <img
-            src="/images/test6.png"
-            alt="아코야 건강하자 님의 프로필 이미지"
+            src={userInfo.profileUrl}
+            alt={`${userInfo.name}님의 프로필 이미지`}
           />
         </a>
       </Link>
       <dl>
-        <dt>아코야 건강하자</dt>
+        <dt>
+          {/* 뱃지 있는 경우 노출  */}
+          <em>
+            <img src="/images/badge_test.svg" alt="뱃지" />
+          </em>{" "}
+          {userInfo.name}
+        </dt>
         <dd>
           <Link href="#">
             <a>
               <img src="/images/inc/icon_map_pin.svg" alt="맵 아이콘" />{" "}
-              까뮤양평타운플레이그라운드
+              {logInfo.place}
             </a>
           </Link>
         </dd>
@@ -70,7 +72,7 @@ export const LogTitle = ({ isExpand, onClickExpand }: LogTitleProps) => {
       >
         {/* <Button className="fdt_familybox_btn"></Button> */}
         <ul>
-          {list.map((item, index) => (
+          {userInfo.family.map((item, index) => (
             <li key={index}>
               <FamilyBox imgUrl={item.imgUrl} name={item.name} />
             </li>
@@ -81,41 +83,34 @@ export const LogTitle = ({ isExpand, onClickExpand }: LogTitleProps) => {
   );
 };
 
-export const LogMedia = () => {
-  return <div className="log-media">Media</div>;
-};
+// 미디어 컨텐츠
+// 짝수번째는 sec_fds_right
+export const LogMedia = ({ media, alignType }) => {
+  // alignType 로그 홀수번째: 우측 floating, 짝수번째: 좌측 floating
+  const [isMuted, setIsMuted] = useState(true);
 
-interface IconTextBoxProps {
-  name: string;
-  active?: boolean;
-  content?: number | string;
-  link?: string;
-  onClickHandler?: () => void;
-}
-export const IconTextBox = ({
-  name,
-  active,
-  content,
-  link,
-  onClickHandler,
-}: IconTextBoxProps) => {
+  const onClickMute = () => {
+    setIsMuted(!isMuted);
+  };
+
   return (
-    <div className="icon-txt-box" onClick={onClickHandler}>
-      <div className="icon-txt-inner">
-        <Icon name={name} active={active} />
-        {/* content && 사용시 0이 넘어오면 span을 못 그림 */}
-        {content !== null && content !== undefined && (
-          <>
-            {link ? (
-              <Link href={link}>
-                <a>{content}</a>
-              </Link>
-            ) : (
-              <span>{content}</span>
-            )}
-          </>
-        )}
-      </div>
+    <div className={classNames("sec_feed_sliderbox", `sec_fds_${alignType}`)}>
+      <ul>
+        <li>
+          <img src="/images/test2.jpeg" alt="테스트2 냥이의 이미지" />
+          {/* mute? play? button */}
+          <Button
+            className={classNames("btn_fds_imgmovie", isMuted && "off")}
+            content={isMuted ? "OFF" : "ON"}
+            onClick={onClickMute}
+          />
+
+          <div className="btnn_fds_imgtag">
+            <Button content="OFF" />
+            <em>10</em>
+          </div>
+        </li>
+      </ul>
     </div>
   );
 };
@@ -139,38 +134,41 @@ export const LogContents = () => {
 
   return (
     <div className="sec_feed_infobox">
+      {/* 탑 영역 버튼s */}
       <div className="sec_fdi_topbox">
-        <Button className="btn_fdi_favorite">
+        <Button
+          className={classNames("btn_fdi_favorite", isLike && "on")}
+          onClick={onClickLike}
+        >
           <span>1,363</span>
         </Button>
         <Button className="btn_fdi_comment">
           <span>63</span>
         </Button>
+        <div className="sec_fdi_posleft">
+          <Button
+            className={classNames("btn_fdi_bookmark", isBookmark && "on")}
+            onClick={onClickBookmark}
+          />
+          <Button className="btn_fdi_more" content="더보기" />
+        </div>
       </div>
-      <div className="float half">
-        <IconTextBox
-          name="like"
-          active={isLike}
-          content={cntLike}
-          onClickHandler={onClickLike}
-        />
-        <IconTextBox name="comment" content={15} />
+      {/* 본문 */}
+      <div className="sec_fdi_textbox">
+        <Link href="#">
+          <a>아코야건강하자</a>
+        </Link>
+        옷걸이는 안버리고 강아지옷 걸을때 사용할 예정이에요
+        <Button className="fdi_hashtag" content="#오리고기" />
+        <Button className="fdi_hashtag" content="#수제간식" />
+        <Button className="fdi_hashtag" content="#옴뇸뇸" />
+        유용하게 잘 쓸것같아요! @땡자마미 저희집 고양이가 미용을해서 입혀봤더니
+        고양이 냐옹냐옹냐옹....
+        <Button className="fdi_moretextbox" content="더보기" />
       </div>
-      <div className="float half">
-        <IconTextBox
-          name="bookmark"
-          active={isBookmark}
-          onClickHandler={onClickBookmark}
-        />
-        <IconTextBox name="more" />
-      </div>
-      <div className="float full">
-        <IconTextBox
-          name="marker"
-          content="까뮤양평타운플레이그라운드"
-          link="/map"
-        />
-      </div>
+
+      {/* 시간정보 */}
+      <p className="sec_fdi_texttime">1시간 전</p>
     </div>
   );
 };

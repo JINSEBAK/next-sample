@@ -8,7 +8,7 @@ import {
 } from "./LogElements";
 import { useState } from "react";
 
-const Log = () => {
+const Log = ({ userInfo, media, logInfo, alignType }) => {
   const [isExpand, setIsExpand] = useState(false);
 
   // 가족 정보 확장-축소
@@ -21,9 +21,13 @@ const Log = () => {
 
   return (
     <LogContainer>
-      <LogTitle isExpand={isExpand} onClickExpand={onClickExpand} />
-      <LogMedia />
-      {/* <LogInfo /> */}
+      <LogTitle
+        isExpand={isExpand}
+        onClickExpand={onClickExpand}
+        userInfo={userInfo}
+        logInfo={logInfo}
+      />
+      <LogMedia media={media} alignType={alignType} />
       <LogContents />
     </LogContainer>
   );

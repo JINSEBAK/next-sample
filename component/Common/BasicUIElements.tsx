@@ -22,19 +22,3 @@ export const Button = ({
 interface IconProps {
   name: string;
 }
-
-// Container --------------------------------------------------
-interface ChildrenProps {
-  children?: JSX.Element | JSX.Element[];
-}
-export const MainContainer = ({ children }: ChildrenProps) => {
-  return <>{children}</>;
-};
-
-export const Contents = ({ children }: ChildrenProps) => {
-  return (
-    <div id="container" className="ptr--top">
-      {children}
-    </div>
-  );
-};

@@ -1,11 +1,11 @@
-import Button from "./component/Button";
-import ModalView from "./component/Modal";
+import Button from "../component/Button";
+import ModalView from "../component/Modal";
 import { useState, useEffect } from "react";
-import SearchHeader from "./component/SearchHeader";
+import SearchHeader from "../component/SearchHeader";
 
 import searchResult from "./searchResult.json";
-import { SearchResultList } from "./component/ContainerView";
-import Icon from "./component/Icon";
+import { SearchResultList } from "../component/ContainerView";
+import Icon from "../component/Icon";
 
 function Search() {
   const [open, setOpen] = useState(false);

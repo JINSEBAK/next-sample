@@ -1,6 +1,6 @@
-import { MainContainer } from "../component/Common/CommonUIElements";
+import { MainContainer } from "../../component/Common/CommonUIElements";
 import { MapContainer } from "./MapElements";
-import BackHeader from "../component/BackHeader";
+import BackHeader from "../../component/BackHeader";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { useState } from "react";
 

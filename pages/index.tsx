@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 // Dynamic import는 지원하지 않음
 import imageUrl from "/assets/images/cat.jpeg";
-import ModalView from "./component/Modal";
+import ModalView from "../component/Modal";
 
 export default function Home() {
   //

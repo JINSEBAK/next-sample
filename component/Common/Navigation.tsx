@@ -1,4 +1,4 @@
-import { Button } from "./CommonUIElements";
+import { Button } from "./BasicUIElements";
 
 const NAV_BAR = [
   { name: "홈", url: "/home", icon: "icon_home" },
