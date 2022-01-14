@@ -83,17 +83,22 @@ const Home = () => {
       <Header scrollTop={scrollTop} />
       <Contents>
         <RecommendFriends />
-        {SAMPLE_LOGS.map((item, index) => {
-          return (
-            <LogContainer
-              key={index}
-              userInfo={item.userInfo}
-              media={item.media}
-              logInfo={item.logInfo}
-              alignType={index % 2 === 0 ? "left" : "right"}
-            />
-          );
-        })}
+        {SAMPLE_LOGS.map(
+          (
+            item: { userInfo: any; media: any; logInfo: any },
+            index: number
+          ) => {
+            return (
+              <LogContainer
+                key={index}
+                userInfo={item.userInfo}
+                media={item.media}
+                logInfo={item.logInfo}
+                alignType={index % 2 === 0 ? "left" : "right"}
+              />
+            );
+          }
+        )}
       </Contents>
       <Navigation />
     </MainContainer>

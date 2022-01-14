@@ -29,6 +29,7 @@ interface LogTitleProps {
   logInfo: any;
   onClickExpand: () => void;
 }
+
 export const LogTitle = ({
   userInfo,
   logInfo,
@@ -84,7 +85,6 @@ export const LogTitle = ({
 };
 
 // 미디어 컨텐츠
-// 짝수번째는 sec_fds_right
 export const LogMedia = ({ media, alignType }) => {
   // alignType 로그 홀수번째: 우측 floating, 짝수번째: 좌측 floating
   const [isMuted, setIsMuted] = useState(true);
@@ -173,10 +173,6 @@ export const LogContents = () => {
   );
 };
 
-export const LogContentsWrapper = ({ children }) => {
-  return <div className="log-contents">{children}</div>;
-};
-
 export const LogContents2 = () => {
   const longTxt =
     "아이들이 즐겁게 노는 모습을 보니\n매일 매일 힐링되네요.\n플러스!\n따끈한 수제간식도 덤으로 먹을 수 있어\n더 건강해지는 느낌이 들어요.";
@@ -224,17 +220,15 @@ export const LogContents2 = () => {
   };
 
   return (
-    <LogContentsWrapper>
+    <div>
       <div>
-        <div>
-          <div className="txt" dangerouslySetInnerHTML={getViewTxt()} />
-          {/* {!txtOpen && (
+        <div className="txt" dangerouslySetInnerHTML={getViewTxt()} />
+        {/* {!txtOpen && (
             <Button text onClick={onClickMore}>
               더보기
             </Button>
           )} */}
-        </div>
       </div>
-    </LogContentsWrapper>
+    </div>
   );
 };
