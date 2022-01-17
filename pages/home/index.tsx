@@ -68,7 +68,6 @@ const Home = () => {
 
   // 페이지 라우터 정보
   const router = useRouter();
-  console.log(router.pathname);
 
   // Document scroll 이벤트
   useEffect(() => {
