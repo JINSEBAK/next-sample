@@ -1,9 +1,8 @@
 import classNames from "classnames";
 import styled, { css } from "styled-components";
-import Icon from "../Icon";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Button } from "../Common/BasicUIElements";
+import { Button, Icon } from "../Common/BasicUIElements";
 
 export const LogContainer = ({ children }) => {
   return <section className="sec_feed_wrap">{children}</section>;
@@ -140,6 +139,7 @@ export const LogContents = () => {
           className={classNames("btn_fdi_favorite", isLike && "on")}
           onClick={onClickLike}
         >
+          <em />
           <span>1,363</span>
         </Button>
         <Button className="btn_fdi_comment">

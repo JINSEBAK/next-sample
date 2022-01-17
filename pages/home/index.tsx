@@ -1,4 +1,5 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import {
   MainContainer,
   Contents,
@@ -7,6 +8,7 @@ import Header from "../../component/Header";
 import Navigation from "../../component/Common/Navigation";
 import LogContainer from "../../component/UserLog";
 import RecommendFriends from "../../component/RecommendFriends";
+import SlideModal from "../../component/Common/SlideModal";
 
 const SAMPLE_LOGS: any = [
   {
@@ -62,6 +64,11 @@ const SAMPLE_LOGS: any = [
 const Home = () => {
   const [expand, setExpand] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
+  const [open, setOpen] = useState(false);
+
+  // 페이지 라우터 정보
+  const router = useRouter();
+  console.log(router.pathname);
 
   // Document scroll 이벤트
   useEffect(() => {
@@ -76,6 +83,10 @@ const Home = () => {
 
   const onClickPets = () => {
     setExpand(!expand);
+  };
+
+  const onClickModal = () => {
+    setOpen(false);
   };
 
   return (
@@ -100,7 +111,9 @@ const Home = () => {
           }
         )}
       </Contents>
-      <Navigation />
+      <Navigation page={router.pathname} />
+
+      <SlideModal open={open} onCloseModal={onClickModal} />
     </MainContainer>
   );
 };

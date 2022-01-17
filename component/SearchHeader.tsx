@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
-import Button from "./Button";
-import Icon from "./Icon";
-import { Input } from "./Forms";
+import { Button, Icon } from "./Common/BasicUIElements";
+import { Input } from "./Common/FormUIElements";
 
 const StyledSearchHeader = styled.div`
   width: 100%;
@@ -34,7 +33,7 @@ const SearchHeader = ({ onChangeInput, keyword }) => {
   return (
     <StyledSearchHeader className="header-search">
       <StyledSearchHeaderInner className="inner">
-        <Button icon onClick={onClickBack}>
+        <Button onClick={onClickBack}>
           <Icon name="back" />
         </Button>
         <Input

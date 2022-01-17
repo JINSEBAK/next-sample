@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { Button } from "./BasicUIElements";
-import Icon from "../Icon";
+import { Button, Icon } from "./BasicUIElements";
 
 // Container --------------------------------------------------
 interface ChildrenProps {
@@ -18,6 +17,7 @@ export const Contents = ({ children }: ChildrenProps) => {
   );
 };
 
+// 아이콘 + 텍스트
 interface IconTextBoxProps {
   name: string;
   active?: boolean;
@@ -49,6 +49,18 @@ export const IconTextBox = ({
           </>
         )}
       </div>
+    </div>
+  );
+};
+
+// Toast popup
+interface ToastProps {
+  message: string;
+}
+export const Toast = ({ message }) => {
+  return (
+    <div className="fot_toast_box">
+      <p>{message}</p>
     </div>
   );
 };

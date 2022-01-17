@@ -1,8 +1,13 @@
+import classNames from "classnames";
+
+// BUTTON
 interface ButtonProps {
   className?: string;
   content?: string;
   children?: JSX.Element | JSX.Element[];
+  ref?: any;
   onClick?: () => void;
+  onBlur?: (e: Event) => void;
 }
 
 export const Button = ({
@@ -19,6 +24,18 @@ export const Button = ({
   );
 };
 
+// ICON
 interface IconProps {
-  name: string;
+  name?: string;
+  active?: boolean;
+  onClickHandler?: () => void;
 }
+
+export const Icon = ({ name, active, onClickHandler }: IconProps) => {
+  return (
+    <span
+      className={classNames("icon", name, active && "on")}
+      onClick={onClickHandler}
+    />
+  );
+};

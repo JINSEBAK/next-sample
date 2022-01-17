@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 import { CSSTransition } from "react-transition-group";
-import ModalTick from "./ModalTick";
+import ModalTick from "../ModalTick";
 
 interface ModalProps {
   open: boolean;
@@ -10,7 +10,7 @@ interface ModalProps {
 const modalStyle = {
   overlay: {
     backgroundColor: "rgba(0,0,0,.3)",
-    zIndex: 1000,
+    zIndex: 5001, // header가 5000
   },
   content: {
     top: "auto",
@@ -23,7 +23,7 @@ const modalStyle = {
   },
 };
 
-const ModalView = ({ open, onCloseModal }: ModalProps) => {
+const SlideModal = ({ open, onCloseModal }: ModalProps) => {
   return (
     <Modal
       isOpen={open}
@@ -42,4 +42,4 @@ const ModalView = ({ open, onCloseModal }: ModalProps) => {
   );
 };
 
-export default ModalView;
+export default SlideModal;

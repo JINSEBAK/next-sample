@@ -1,4 +1,6 @@
 import { Button } from "./BasicUIElements";
+import classNames from "classnames";
+import Router from "next/router";
 
 const NAV_BAR = [
   { name: "홈", url: "/home", icon: "icon_home" },
@@ -13,6 +15,10 @@ interface NavigationProps {
 }
 
 const Navigation = ({ page }: NavigationProps) => {
+  const onClickHandle = (url: string) => {
+    Router.push(url);
+  };
+
   return (
     <footer id="footer" className="show">
       <div className="fot_toast_box">
@@ -23,7 +29,11 @@ const Navigation = ({ page }: NavigationProps) => {
         {NAV_BAR.map((item, index) => {
           return (
             <li key={index}>
-              <Button>
+              <Button
+                className={classNames(page === item.url && "on")}
+                data-url={item.url}
+                onClick={() => onClickHandle(item.url)}
+              >
                 <p>
                   <img src={`/images/inc/${item.icon}.svg`} alt={item.name} />
                 </p>

@@ -31,7 +31,7 @@ const StyleButton = styled.button`
 `;
 
 interface ButtonProps {
-  name: string;
+  name?: string;
   children?: JSX.Element;
   onClick?: () => void;
 }

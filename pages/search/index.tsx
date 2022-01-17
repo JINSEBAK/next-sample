@@ -1,13 +1,12 @@
-import Button from "../component/Button";
-import ModalView from "../component/Modal";
+import SlideModal from "../../component/Common/SlideModal";
 import { useState, useEffect } from "react";
-import SearchHeader from "../component/SearchHeader";
+import SearchHeader from "../../component/SearchHeader";
 
-import searchResult from "./searchResult.json";
-import { SearchResultList } from "../component/ContainerView";
-import Icon from "../component/Icon";
+import searchResult from "../searchResult.json";
+import { SearchResultList } from "../../component/ContainerView";
+import { Button, Icon } from "../../component/Common/BasicUIElements";
 
-function Search() {
+const Search = () => {
   const [open, setOpen] = useState(false);
   const [results, setResults] = useState([]);
   const [keyword, setKeyword] = useState("");
@@ -53,7 +52,7 @@ function Search() {
                 className="title"
                 dangerouslySetInnerHTML={HighLighter(item.name, keyword)}
               />
-              <Button icon small>
+              <Button>
                 <Icon name="delete" />
               </Button>
             </li>
@@ -64,12 +63,12 @@ function Search() {
       <h4>SEACRH</h4>
       <div>
         <input type="text" />
-        <Button onClick={onClickHandler}>검색</Button>
+        <Button onClick={onClickHandler} content="검색" />
       </div>
 
-      <ModalView open={open} onCloseModal={onCloseModal} />
+      <SlideModal open={open} onCloseModal={onCloseModal} />
     </div>
   );
-}
+};
 
 export default Search;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 // Dynamic import는 지원하지 않음
 import imageUrl from "/assets/images/cat.jpeg";
-import ModalView from "../component/Modal";
+import SlideModal from "../component/Common/SlideModal";
 
 export default function Home() {
   //
@@ -21,7 +21,7 @@ export default function Home() {
         {/* <Image src={imageUrl} alt="Floating Cat" /> */}
         <input type="file" multiple />
       </div>
-      <ModalView open={open} onCloseModal={onCloseModal} />
+      <SlideModal open={open} onCloseModal={onCloseModal} />
     </>
   );
 }

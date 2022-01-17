@@ -19,7 +19,7 @@ import "../styles/globals.css";
 // CSS import
 import "../styles/reset.css";
 // import "../styles/font.css";
-// import "../styles/common.css";
+import "../styles/common.css";
 import "../styles/style.css";
 
 // CHECK! 공통 CSS외에는 GNB별로 분리해서 전달하기로 함. 각 페이지별로 CSS module 파일 생성할 것
