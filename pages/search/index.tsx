@@ -63,7 +63,7 @@ const Search = () => {
       <SearchHeader onChangeInput={onChangeInput} keyword={keyword} />
       <Contents className="ssg_search">
         {/* 추천 검색 */}
-        <DivContainer className="sch_content_home">
+        <DivContainer className="search_content_home">
           <RecommendKeyword lists={RECOMMEND_KEYWORD} />
           {/* 최근 검색 or 검색 결과 */}
           <section className="sch_recent">
