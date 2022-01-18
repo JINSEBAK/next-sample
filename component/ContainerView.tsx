@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import classNames from "classnames";
 
 const ThumbList = styled.div`
   display: flex;

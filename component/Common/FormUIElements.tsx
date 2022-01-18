@@ -4,13 +4,21 @@ import classNames from "classnames";
 
 interface InputProps {
   type: string;
+  className: string;
   placeholder?: string;
+  value?: any;
   onChange?: (e) => React.ChangeEvent<HTMLInputElement>;
 }
-export const Input = ({ type, placeholder, onChange }: InputProps) => {
+export const Input = ({
+  type,
+  className,
+  placeholder,
+  onChange,
+}: InputProps) => {
   return (
     <input
       type={type}
+      className={className}
       placeholder={placeholder}
       onChange={(e) => onChange(e)}
     />

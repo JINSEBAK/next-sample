@@ -4,6 +4,7 @@ import ModalTick from "../ModalTick";
 
 interface ModalProps {
   open: boolean;
+  children: JSX.Element | JSX.Element[];
   onCloseModal: () => void;
 }
 
@@ -23,7 +24,7 @@ const modalStyle = {
   },
 };
 
-const SlideModal = ({ open, onCloseModal }: ModalProps) => {
+const SlideModal = ({ open, onCloseModal, children }: ModalProps) => {
   return (
     <Modal
       isOpen={open}
@@ -38,6 +39,16 @@ const SlideModal = ({ open, onCloseModal }: ModalProps) => {
       shouldCloseOnEsc={true}
     >
       <ModalTick onClick={onCloseModal} />
+      <div
+        style={{
+          border: "1px solid #ddd",
+          padding: "24px",
+          textAlign: "center",
+          margin: "24px 0",
+        }}
+      >
+        {children}
+      </div>
     </Modal>
   );
 };

@@ -72,7 +72,6 @@ export const scrollEvent = () => {
   let lastScrollTop = 0;
   let delta = 5;
   let fixBox = document.querySelector("#footer");
-  console.log(fixBox);
   if (fixBox) {
     let fixBoxHeight = fixBox.offsetHeight;
     let didScroll;

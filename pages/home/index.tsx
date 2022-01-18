@@ -10,6 +10,9 @@ import LogContainer from "../../component/UserLog";
 import RecommendFriends from "../../component/RecommendFriends";
 import SlideModal from "../../component/Common/SlideModal";
 
+import { animated, useSpring, config } from "@react-spring/web";
+import { useDrag } from "@use-gesture/react";
+
 const SAMPLE_LOGS: any = [
   {
     media: [
@@ -80,6 +83,12 @@ const Home = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setOpen(true);
+    }, 1000);
+  }, []);
+
   const onClickPets = () => {
     setExpand(!expand);
   };
@@ -111,8 +120,9 @@ const Home = () => {
         )}
       </Contents>
       <Navigation page={router.pathname} />
-
-      <SlideModal open={open} onCloseModal={onClickModal} />
+      <SlideModal open={open} onCloseModal={onClickModal}>
+        <h3>뱃지 획득 축하축하</h3>
+      </SlideModal>
     </MainContainer>
   );
 };

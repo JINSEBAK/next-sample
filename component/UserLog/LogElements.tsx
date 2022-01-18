@@ -1,8 +1,18 @@
 import classNames from "classnames";
 import styled, { css } from "styled-components";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { Button, Icon } from "../Common/BasicUIElements";
+import { useSpring, animated } from "@react-spring/web";
+import {
+  createUseGesture,
+  dragAction,
+  pinchAction,
+  usePinch,
+} from "@use-gesture/react";
+
+// 액션 생성
+const useGesture = createUseGesture([dragAction, pinchAction]);
 
 export const LogContainer = ({ children }) => {
   return <section className="sec_feed_wrap">{children}</section>;
@@ -87,30 +97,70 @@ export const LogTitle = ({
 export const LogMedia = ({ media, alignType }) => {
   // alignType 로그 홀수번째: 우측 floating, 짝수번째: 좌측 floating
   const [isMuted, setIsMuted] = useState(true);
-
   const onClickMute = () => {
     setIsMuted(!isMuted);
   };
 
-  return (
-    <div className={classNames("sec_feed_sliderbox", `sec_fds_${alignType}`)}>
-      <ul>
-        <li>
-          <img src="/images/test2.jpeg" alt="테스트2 냥이의 이미지" />
-          {/* mute? play? button */}
-          <Button
-            className={classNames("btn_fds_imgmovie", isMuted && "off")}
-            content={isMuted ? "OFF" : "ON"}
-            onClick={onClickMute}
-          />
+  useEffect(() => {
+    const handler = (e) => e.preventDefault();
+    document.addEventListener("gesturestart", handler);
+    document.addEventListener("gesturechange", handler);
+    document.addEventListener("gestureend", handler);
+    return () => {
+      document.removeEventListener("gesturestart", handler);
+      document.removeEventListener("gesturechange", handler);
+      document.removeEventListener("gestureend", handler);
+    };
+  }, []);
 
-          <div className="btnn_fds_imgtag">
-            <Button content="OFF" />
-            <em>10</em>
-          </div>
-        </li>
-      </ul>
-    </div>
+  const imageRef = useRef(null);
+  const [style, api] = useSpring(() => ({
+    x: 0,
+    y: 0,
+    scale: 1,
+    rotateZ: 0,
+  }));
+
+  const bind = usePinch((state) => {
+    console.log(state);
+  });
+  return (
+    <>
+      {/* zoom-pan-pinch 기능을 위한 컴포넌트 */}
+      <div className={classNames("sec_feed_sliderbox", `sec_fds_${alignType}`)}>
+        <ul>
+          <li>
+            {/* img > touchAction: pinch-zoom 스타일 적용 > 이미지 영역에서 문서 전체가 확대됨 */}
+            {/* <TransformWrapper
+              initialScale={1}
+              minScale={1}
+              maxScale={3}
+              initialPositionX={0}
+              initialPositionY={0}
+              centerOnInit={true}
+              centerZoomedOut={true}
+              wheel={{ disabled: true }}
+              panning={{ disabled: true }}
+            >
+              <TransformComponent> */}
+
+            <img src="/images/test2.jpeg" alt="테스트2 냥이의 이미지" />
+            {/* </TransformComponent>
+            </TransformWrapper> */}
+            {/* mute? play? button */}
+            <Button
+              className={classNames("btn_fds_imgmovie", isMuted && "off")}
+              content={isMuted ? "OFF" : "ON"}
+              onClick={onClickMute}
+            />
+            <div className="btnn_fds_imgtag">
+              <Button content="OFF" />
+              <em>10</em>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </>
   );
 };
 

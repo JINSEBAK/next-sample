@@ -5,16 +5,29 @@ import { Button, Icon } from "./BasicUIElements";
 interface ChildrenProps {
   children?: JSX.Element | JSX.Element[];
 }
+
+interface ContainerProps {
+  className?: string;
+  children: JSX.Element | JSX.Element[];
+}
 export const MainContainer = ({ children }: ChildrenProps) => {
   return <>{children}</>;
 };
 
-export const Contents = ({ children }: ChildrenProps) => {
+export const Contents = ({ className, children }: ContainerProps) => {
   return (
-    <div id="container" className="ptr--top">
+    <div id="container" className={className}>
       {children}
     </div>
   );
+};
+
+export const DivContainer = ({ className, children }: ContainerProps) => {
+  return <div className={className}>{children}</div>;
+};
+
+export const SectionContainer = ({ className, children }: ContainerProps) => {
+  return <section className={className}>{children}</section>;
 };
 
 // 아이콘 + 텍스트
