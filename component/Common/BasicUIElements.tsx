@@ -6,8 +6,8 @@ interface ButtonProps {
   content?: string;
   children?: JSX.Element | JSX.Element[];
   ref?: any;
-  onClick?: () => void;
-  onBlur?: (e: Event) => void;
+  onClick?: (e) => void;
+  onDoubleClick?: () => void;
 }
 
 export const Button = ({
@@ -15,9 +15,15 @@ export const Button = ({
   content,
   children,
   onClick,
+  onDoubleClick,
 }: ButtonProps) => {
   return (
-    <button type="button" className={className} onClick={onClick && onClick}>
+    <button
+      type="button"
+      className={className}
+      onClick={onClick}
+      onDoubleClick={onDoubleClick}
+    >
       {content}
       {children}
     </button>

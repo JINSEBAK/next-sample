@@ -49,6 +49,13 @@ const Search = () => {
     setActiveTab(index);
   };
 
+  // 검색 이력 삭제
+  const onClickDelete = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const res = confirm("삭제할거야?");
+  };
+
   return (
     <MainContainer>
       <SearchHeader
@@ -84,6 +91,7 @@ const Search = () => {
                   keyword={keyword}
                   lists={searchResults}
                   highLighter={highLighter}
+                  onClickDelete={onClickDelete}
                 />
               </ContentsInner>
             </>

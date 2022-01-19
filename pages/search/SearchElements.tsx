@@ -33,8 +33,19 @@ export const RecommendKeyword = ({ lists }: RecommendKeywordProps) => {
   );
 };
 
+interface SearchProps {
+  keyword: string;
+  lists: any[];
+  highLighter: any;
+  onClickDelete?: (e) => void;
+}
 // 검색 결과 (목록)
-export const SearchResultList = ({ keyword, lists, highLighter }) => {
+export const SearchResultList = ({
+  keyword,
+  lists,
+  highLighter,
+  onClickDelete,
+}: SearchProps) => {
   // 프로필 영역 랜더링
   const renderSearchImg = (item: { type: string; profileUrl: string }) => {
     return (
@@ -69,7 +80,10 @@ export const SearchResultList = ({ keyword, lists, highLighter }) => {
                   </div>
                   {/* 최근 검색 결과인 경우에만 삭제 버튼 노출 */}
                   {!(keyword.length > 0) && (
-                    <Button className="btn_x_delete">
+                    <Button
+                      className="btn_x_delete"
+                      onClick={(e) => onClickDelete(e)}
+                    >
                       <span className="sr">삭제</span>
                     </Button>
                   )}
