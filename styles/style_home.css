@@ -114,17 +114,21 @@
  } 
 
 .btn_txt_delete { 
- padding: 4px; 
- font-size: 10px; 
- color: #78A7CB; 
- } 
+  padding: 4px; 
+  font-size: 10px; 
+  color: #78A7CB; 
+} 
 
 .btn_x_delete { 
- display: inline-block; 
- width: 32px; 
- height: 32px; 
- background: url(/images/inc/icon_x_delete.svg) no-repeat 50%/16px; 
- } 
+  display: inline-block; 
+  width: 32px; 
+  height: 32px; 
+  background: url(/images/inc/icon_x_delete.svg) no-repeat 50%/16px; 
+} 
+.btn_txt_delete:active, 
+.btn_x_delete:active { 
+  background-color: rgba(46, 26, 70, 0.09) !important;
+}
 
 .line_tabs { 
  display: -webkit-box; 
@@ -328,10 +332,6 @@
  border-radius: 8px; 
  } 
 
-.sch_recommend_list .list_item a:active { 
- background-color: rgba(46, 26, 70, 0.2) !important; 
- } 
-
 .sch_recommend_list .list_item + .list_item { 
  margin-left: 8px; 
  } 
@@ -353,6 +353,18 @@
 .sch_recent .s_info { 
  max-width: calc(100% - 48px - 8px - 24px); 
  } 
+
+ /* 검색 내 button, a :active */
+.search_result_item > a:active,
+.search_header_form .sh_form_wrap .btn_kwd_delete:active,
+.line_tabs .tab_item > a:active,
+.btn_txt_delete:active, 
+.btn_x_delete:active { 
+  background-color: rgba(46, 26, 70, 0.09) !important;
+}
+.sch_recommend_list .list_item a:active { 
+  background-color: rgba(46, 26, 70, 0.2) !important; 
+} 
 
 /*****************************************************************/
 /** 유저프로필 **/

@@ -3,6 +3,7 @@ import { Transition, TransitionGroup } from "react-transition-group";
 import { useRouter } from "next/router";
 import { userAgent, scrollEvent } from "../lib/utils";
 import Head from "next/head";
+import classNames from "classnames";
 
 const TIMEOUT = 200;
 const getTransitionStyles = {
@@ -47,7 +48,7 @@ function Layout({ children }) {
         />
         <meta name="format-detection" content="telephone=no" />
       </Head>
-      <article className="pullto">
+      <article className={classNames(router.pathname === "/home" && "pullto")}>
         {/* <Header bgColor={""} /> */}
         {children}
         {/* <TransitionGroup style={{ position: "relative" }}>

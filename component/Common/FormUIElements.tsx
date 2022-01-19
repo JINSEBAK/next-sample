@@ -13,6 +13,7 @@ export const Input = ({
   type,
   className,
   placeholder,
+  value,
   onChange,
 }: InputProps) => {
   return (
@@ -20,6 +21,7 @@ export const Input = ({
       type={type}
       className={className}
       placeholder={placeholder}
+      value={value}
       onChange={(e) => onChange(e)}
     />
   );

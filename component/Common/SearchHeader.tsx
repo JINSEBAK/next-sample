@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button, Icon } from "./BasicUIElements";
 import { Input } from "./FormUIElements";
 
-const SearchHeader = ({ onChangeInput, keyword }) => {
+const SearchHeader = ({ onChangeInput, onClearKeyword, keyword }) => {
   // 뒤로가기
   const onClickBack = () => {
     history.back();
@@ -15,11 +15,16 @@ const SearchHeader = ({ onChangeInput, keyword }) => {
 
   return (
     <header id="header">
-      <Button className="btn_hdback btn_hdleft" content="HD BACK" />
+      <Button
+        className="btn_hdback btn_hdleft"
+        content="HD BACK"
+        onClick={onClickBack}
+      />
       <div className="search_header_form">
         <form>
           <div className="sh_form_wrap">
             <Icon name="icon_search" />
+            {/* 기본 placeholder는 관리자가 설정한 추천어 -> 키워드 없이 검색 시 해당 추천어로 검색 */}
             <Input
               type="text"
               className="sh_input"
@@ -27,9 +32,12 @@ const SearchHeader = ({ onChangeInput, keyword }) => {
               onChange={(e) => onChangeInput(e)}
               value={keyword}
             />
-            <Button className="btn_kwd_delete">
-              <span className="sr">삭제</span>
-            </Button>
+            {/* 키워드 입력 시에만 노출 */}
+            {keyword.length > 0 && (
+              <Button className="btn_kwd_delete" onClick={onClearKeyword}>
+                <span className="sr">삭제</span>
+              </Button>
+            )}
           </div>
         </form>
       </div>

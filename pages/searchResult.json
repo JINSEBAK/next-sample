@@ -1,24 +1,46 @@
 {
-  "lists": [
+  "RecommendResults": [
+    { "code": 1, "name": "쉬야응가" },
+    { "code": 2, "name": "크런치홀릭" },
+    { "code": 3, "name": "참치와도미" },
+    { "code": 4, "name": "큰알갱이" },
+    { "code": 5, "name": "수제간식" },
+    { "code": 6, "name": "쉬야응가" },
+    { "code": 7, "name": "크런치홀릭" },
+    { "code": 8, "name": "참치와도미" },
+    { "code": 9, "name": "큰알갱이" },
+    { "code": 10, "name": "수제간식" }
+  ],
+  "SearchResults": [
     {
+      "code": 1,
       "type": "place",
-      "name": "연예인애견카페"
+      "title": "내추럴가든59가든59가든59가든59가든59가든59가든59가든59가든59가든59",
+      "sub": "서울특별시"
     },
     {
+      "code": 2,
       "type": "hashtag",
-      "name": "연예인추천간식"
+      "title": "내추럴펫푸드"
     },
     {
-      "type": "shop",
-      "name": "연예인펫캐리어"
+      "code": 3,
+      "type": "user",
+      "title": "내추럴집사",
+      "profileUrl": "/images/test2.jpeg",
+      "sub": "gilnyang"
     },
     {
-      "type": "family",
-      "name": "연예인친동생"
+      "code": 4,
+      "type": "goods",
+      "title": "내추럴EX 강아지 간식 황태본",
+      "profileUrl": "/images/test3.jpeg"
     },
     {
-      "type": "atsign",
-      "name": "연예인집사"
+      "code": 5,
+      "type": "brand",
+      "title": "내추럴발란스",
+      "profileUrl": "/images/test4.jpeg"
     }
   ]
 }

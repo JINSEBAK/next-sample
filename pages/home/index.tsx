@@ -84,8 +84,9 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    // 랜더링 1초 뒤에 팝업 띄우기
     setTimeout(() => {
-      setOpen(true);
+      //setOpen(true);
     }, 1000);
   }, []);
 
@@ -99,8 +100,8 @@ const Home = () => {
 
   return (
     <MainContainer>
-      <Header scrollTop={scrollTop} />
-      <Contents>
+      <Header />
+      <Contents className="ssg_home">
         <RecommendFriends />
         {SAMPLE_LOGS.map(
           (

@@ -13,15 +13,16 @@
 /**
  * 모든 페이지에서 적용되는 CSS
  * 각 컴포넌트별로 CSS 생성하고 싶을 때는 [name].module.css
+ * TODO! 현재 퍼블리싱된 css 파일을 모듈로 사용할 수 있는지 확인!
  */
 import "../styles/globals.css";
 
 // CSS import
 import "../styles/reset.css";
-// import "../styles/font.css";
+import "../styles/font.css";
 import "../styles/common.css";
-// import "../styles/style.css";
 import "../styles/style_home.css";
+import "../styles/style_scrap.css";
 
 // CHECK! 공통 CSS외에는 GNB별로 분리해서 전달하기로 함. 각 페이지별로 CSS module 파일 생성할 것
 
