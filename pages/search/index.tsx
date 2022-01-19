@@ -8,6 +8,7 @@ import {
 } from "../../component/Common/CommonUIElements";
 import { RecommendKeyword, SearchResultList } from "./SearchElements";
 import { SearchTabTitle } from "../../lib/types/common";
+import NoSearchResult from "../../component/Common/NoSearchResult";
 
 // 샘플데이터s
 import searchResult from "../searchResult.json";
@@ -26,6 +27,7 @@ const Search = () => {
   // 검색어가 변경될때마다 실행 - 실시간 검색
   useEffect(() => {
     setSearchResults(searchResult.SearchResults);
+    //setSearchResults([]);
   }, [keyword]);
 
   // 검색어 입력
@@ -72,16 +74,22 @@ const Search = () => {
         >
           {keyword.length > 0 ? (
             <>
-              <Tabs
-                menu={SearchTabTitle}
-                activeTab={activeTab}
-                onClickTab={onClickTab}
-              />
-              <SearchResultList
-                keyword={keyword}
-                lists={searchResults}
-                highLighter={highLighter}
-              />
+              {searchResults.length > 0 ? (
+                <>
+                  <Tabs
+                    menu={SearchTabTitle}
+                    activeTab={activeTab}
+                    onClickTab={onClickTab}
+                  />
+                  <SearchResultList
+                    keyword={keyword}
+                    lists={searchResults}
+                    highLighter={highLighter}
+                  />
+                </>
+              ) : (
+                <NoSearchResult message="검색 결과가 없어요" />
+              )}
             </>
           ) : (
             <>

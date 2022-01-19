@@ -4,14 +4,11 @@ import {
   MainContainer,
   Contents,
 } from "../../component/Common/CommonUIElements";
-import Header from "../../component/Header";
+import HomeHeader from "../../component/Common/HomeHeader";
 import Navigation from "../../component/Common/Navigation";
 import LogContainer from "../../component/UserLog";
 import RecommendFriends from "../../component/RecommendFriends";
 import SlideModal from "../../component/Common/SlideModal";
-
-import { animated, useSpring, config } from "@react-spring/web";
-import { useDrag } from "@use-gesture/react";
 
 const SAMPLE_LOGS: any = [
   {
@@ -100,7 +97,7 @@ const Home = () => {
 
   return (
     <MainContainer>
-      <Header />
+      <HomeHeader />
       <Contents className="ssg_home">
         <RecommendFriends />
         {SAMPLE_LOGS.map(

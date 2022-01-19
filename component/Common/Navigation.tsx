@@ -1,14 +1,12 @@
 import { Button } from "./BasicUIElements";
 import classNames from "classnames";
-import { useState } from "react";
 import { useRouter } from "next/router";
-import { useDoubleClick } from "../../hooks";
 
 const NAV_BAR = [
   { name: "홈", url: "/home", icon: "icon_home" },
   { name: "스토어", url: "/search", icon: "icon_shopping_bag" },
   { name: "디스커버", url: "/", icon: "icon_discover" },
-  { name: "스크랩", url: "/mypage", icon: "icon_bookmark" },
+  { name: "스크랩", url: "/archive", icon: "icon_bookmark" },
   { name: "내 정보", url: "/settings", icon: "icon_user" },
 ];
 

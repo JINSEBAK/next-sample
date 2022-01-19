@@ -1,5 +1,5 @@
 import Router from "next/router";
-import { Button } from "./Common/BasicUIElements";
+import { Button } from "./BasicUIElements";
 
 interface HeaderProps {}
 
