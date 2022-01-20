@@ -8,3 +8,9 @@ export enum SearchTabTitle {
   "product" = "상품",
   "brand" = "brand",
 }
+
+export enum ProfileMenu {
+  "M001" = "공유하기",
+  "M002" = "팔로우 취소하기",
+  "M003" = "신고하기",
+}

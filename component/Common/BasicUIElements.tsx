@@ -4,7 +4,7 @@ import classNames from "classnames";
 interface ButtonProps {
   className?: string;
   content?: string;
-  children?: JSX.Element | JSX.Element[];
+  children?: JSX.Element | JSX.Element[] | string;
   ref?: any;
   onClick?: (e) => void;
   onDoubleClick?: () => void;

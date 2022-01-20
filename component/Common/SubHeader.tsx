@@ -1,6 +1,9 @@
 import { Button } from "../../component/Common/BasicUIElements";
 
-const SubHeader = () => {
+interface SubHeaderProps {
+  onClickOpenClose?: () => void;
+}
+const SubHeader = ({ onClickOpenClose }: SubHeaderProps) => {
   //
   return (
     <header id="header">
@@ -8,7 +11,11 @@ const SubHeader = () => {
       <h2>
         <span>닉네임12345</span>
       </h2>
-      <Button className="btn_hdmore btn_hdright" content="HD MORE" />
+      <Button
+        className="btn_hdmore btn_hdright"
+        content="HD MORE"
+        onClick={onClickOpenClose}
+      />
     </header>
   );
 };
