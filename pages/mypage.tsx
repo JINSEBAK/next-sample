@@ -1,5 +1,5 @@
 import { SelectableGroup, createSelectable } from "react-selectable-fast";
-import PhotoThumb from "./component/PhotoThumb";
+import PhotoThumb from "../component/PhotoThumb";
 
 const Mypage = () => {
   return (

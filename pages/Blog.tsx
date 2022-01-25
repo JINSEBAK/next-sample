@@ -1,5 +1,5 @@
 import styles from "../styles/About.module.css";
-import Button from "./component/Button";
+import Button from "../component/Button";
 import { InferGetStaticPropsType } from "next";
 
 type Post = {
