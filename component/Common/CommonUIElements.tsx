@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 // Container --------------------------------------------------
 interface ChildrenProps {
-  children?: JSX.Element | JSX.Element[];
+  children?: JSX.Element | JSX.Element[] | React.ReactNode;
 }
 
 interface ContainerProps {

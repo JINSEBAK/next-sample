@@ -7,6 +7,7 @@ import {
   LogContents,
 } from "./LogElements";
 import { useState } from "react";
+import Router from "next/router";
 
 const Log = ({ userInfo, media, logInfo, alignType }) => {
   const [isExpand, setIsExpand] = useState(false);
@@ -28,7 +29,7 @@ const Log = ({ userInfo, media, logInfo, alignType }) => {
         logInfo={logInfo}
       />
       <LogMedia media={media} alignType={alignType} />
-      <LogContents />
+      <LogContents Router={Router} />
     </LogContainer>
   );
 };
