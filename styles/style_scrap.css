@@ -1,5 +1,5 @@
 @charset "utf-8";
-#container.scrap {margin-top: 56px; margin-bottom: 0;}
+#container.scrap {margin-top: 0; margin-bottom: 0;}
 /*보관함*/ 
 #container .scrap_frame {width: calc(100% - 32px); margin: auto; }
 #container .scrap_folder_list {display: flex; flex-flow: row wrap; justify-content: space-between;}
@@ -15,10 +15,12 @@
 #container .scrap_frame li a.base_folder {border: 2px dashed #a8c4e1; background-color: transparent; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 #container .scrap_frame li a.base_folder span {color: #a8c4e1; top: calc(50% - 22px);}
 #container .scrap_frame li a.base_folder span em {display: block; margin: 8px auto 0; background: transparent url(/images/inc/icon_add_plus.svg) center center no-repeat; width: 24px;	height: 24px;}
-#container .scrap_frame li button:active {background-color: rgba(46, 26, 70, 0.09);}
+#container .scrap_frame li button:active {background-color: rgba(46, 26, 70, 0.04);}
 /*보관함 상세*/
-#container .scrap_img_list {display: flex; flex-flow: row wrap; justify-content: space-between;}
-#container .scrap_img_list li {width: calc(33.33% - 1px); height: 33.32vw; margin-bottom: 1px; position: relative; overflow: hidden;}
+#container .scrap_img_list {display: flex; flex-flow: row wrap; justify-content: flex-start;}
+#container .scrap_img_list li {width: calc(33.33% - 1px); height: 33.32vw; margin-bottom: 1px; position: relative; overflow: hidden; margin-left: 1px;}
+#container .scrap_img_list li:nth-child(3n-2) {margin-left: 0;}
+#container .scrap_img_list li:nth-child(3n) {width: 33.33%;}
 #container .scrap_img_list li button {display: flex; position: relative; width: 100%; height: 100%; overflow: hidden; justify-content: center; align-content: center; background: #F5F5F8;}
 #container .scrap_img_list li button:before {content: ""; display: block; width: 100%; height: 100%; background: #000; opacity: 0; position: absolute; top: 0; left: 0; z-index: 4;}
 #container .scrap_img_list li button:active:before {opacity: 0.2;}
@@ -59,7 +61,7 @@
 #aside .pop_listbtn_imgtext button .pop_listimg {width: 36px; height: 36px; display: inline-flex; overflow: hidden; justify-content: center; margin-left: 16px; margin-right: 8px;}
 #aside .pop_listbtn_imgtext button .pop_listimg img {object-fit: cover;}
 #aside .pop_listbtn_imgtext button span {font-size: 14px; font-weight: 500; display: inline-flex;}
-#aside .pop_listbtn_imgtext button:active {background-color: rgba(46, 26, 70, 0.09);}
+#aside .pop_listbtn_imgtext button:active {background-color: rgba(46, 26, 70, 0.04);}
 
 
 

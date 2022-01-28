@@ -1,5 +1,5 @@
 @charset "utf-8";
-#container.comment {margin-top: 56px;}
+#container.comment {margin-top: 0;}
 /* 댓글 */
 #container .sec_cmt_box {padding: 16px 0 0;}
 #container .sec_cmt_box .sec_feed_titlebox {margin: 0 16px;}
@@ -95,7 +95,50 @@
 #container .sec_pro_question .sec_qchk_btn button:active {background-color: rgba(46, 26, 70, 0.04);}
 #container.product_reqna .sec_proq_line {border: 0; border-top: 1px solid #f4f4f4; margin: 10px -16px 13px;}
 
+/* 장소태그 지도검색 결과 */
+#container.home_schmap {margin-bottom: 0;}
+#container .hsch_mapbox {background: #eee; height: 200px; position: relative;}
+#container .map_point_style1 {display: inline-block; text-align: center; position: absolute; top: 70px; left: 70px;}
+#container .map_point_style1 em {display: inline-block; width: 32px; height: 34px; margin-bottom: 5px;}
+#container .map_point_style1 em img {width: 100%; height: 100%; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5))}
+#container .map_point_style1 p {color: #78A7CB; font-size: 13px; font-weight: 600; text-align: center;}
 
+#container .sec_hmapgellery_box {background: #fff;}
+#container .sec_hmapcount_box {position: relative; padding: 12px 16px; border-bottom: 1px solid #f4f4f4;}
+#container .sec_hmapcount_box > span {display: inline-block; width: 32px; height: 32px; -webkit-border-radius: 32px; -moz-border-radius: 32px; border-radius: 32px; overflow: hidden;}
+#container .sec_hmapcount_box > span img {width: 100%; height: 100%; object-fit:cover;}
+#container .sec_hmapcount_box em {display: inline-block; font-size: 14px; font-weight: 500; margin-left: 8px;}
+#container .sec_hmapcount_box button {position: absolute; right: 0; top: 4px; padding: 15px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;}
+#container .sec_hmapcount_box button span {color: #78a7cb; font-size: 14px; font-weight: 700; display: inline-block; margin-top: -2px;}
+#container .sec_hmapcount_box button:active {background-color: rgba(46, 26, 70, 0.04);}
+#container .sec_hmaptab_ul {display: flex; justify-content: flex-start; align-items: center; flex-flow: row wrap;}
+#container .sec_hmaptab_ul li {width: 50%;}
+#container .sec_hmaptab_ul li button {width: 100%; height: 44px;}
+#container .sec_hmaptab_ul li button span {font-size: 14px; font-weight: 700; margin-top: -2px; opacity: .5;}
+#container .sec_hmaptab_ul li button.on span {opacity: 1;}
+#container .sec_hmaptab_ul li button:active {background-color: rgba(46, 26, 70, 0.04);}
+
+#container .sec_hmapgallery_box {display: flex;flex-flow: row wrap;}
+#container .sec_hmapgallery_box li {width: calc(33.33% - 1px);height: 33.33vw;margin-left: 1px;margin-bottom: 1px;position: relative;overflow: hidden;background: #F5F5F8;}
+#container .sec_hmapgallery_box li:nth-child(3n-2) {margin-left: 0;}
+#container .sec_hmapgallery_box li:nth-child(3n) {width: 33.33%;}
+#container .sec_hmapgallery_box li>a {position: relative;display: block;width: 100%;height: 100%;overflow: hidden;background: #F5F5F8;}
+#container .sec_hmapgallery_box li > a:before {content:'';position: absolute;top: 0;bottom: 0;left: 0;right: 0;z-index: 1;width: 100%;height: 100%;background: #000;opacity: 0;}
+#container .sec_hmapgallery_box li > a:active:before {opacity: .1;}
+#container .sec_hmapgallery_box li>a .thumb {width: 100%;height: 100%;object-fit: cover;}
+#container .sec_hmapgallery_box li .btn_scrap,.sec_hmapgallery_box li>a .icon {position: absolute;top: 8px;right: 8px;z-index: 2;width: 20px;height: 20px;}
+#container .sec_hmapgallery_box li>a .icon_slide {background: url(/images/inc/icon_slide_w.svg) no-repeat 50%/30px;}
+#container .sec_hmapgallery_box li>a .icon_video {background: url(/images/inc/icon_video_w.svg) no-repeat 50%/30px;}
+#container .sec_hmapgallery_box li .btn_scrap {width: 28px;height: 28px;top: 4px;right: 4px;background: url(/images/inc/icon_bookmark_w.svg) no-repeat 50% 50%;}
+#container .sec_hmapgallery_box li .btn_scrap.is_active {background-image: url(/images/inc/icon_bookmark_w_on.svg);}
+#container .sec_hmapgallery_box li>a .icon_place {top: auto;right: auto;bottom: 8px;left: 8px;background: url(/images/inc/icon_map_pin_w.svg) no-repeat 50%/auto 28px;}
+#container .sec_hmapgallery_box li>a .prd_info {position: absolute;bottom: 0;left: 0;right: 0;z-index: 1;display: flex;flex-direction: column-reverse;width: 100%;padding: 14px 8px 9px;box-sizing: border-box;background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);}
+#container .sec_hmapgallery_box li>a .prd_info > span {margin-top: 4px;font-size: 10px;color: #fff;}
+#container .sec_hmapgallery_box li>a .prd_info .price {font-weight: 400;}
+#container .sec_hmapgallery_box li>a .prd_info .name {font-weight: 500;}
+#container .sec_hmapgallery_box li>a .prd_info .brand {font-weight: 700;}
+#container .sec_hmapgallery_box li>a .prd_soldout {position: absolute;bottom: 0;left: 0;right: 0;z-index: 2;display: flex;width: 100%;height: 28px;align-items: center;justify-content: center;background: rgba(46, 26, 70, 0.5);}
+#container .sec_hmapgallery_box li>a .prd_soldout > span {font-size: 12px;font-weight: 500;color: #fff;}
 
 
 

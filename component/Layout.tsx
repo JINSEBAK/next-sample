@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { userAgent, scrollEvent } from "../lib/utils";
 import Head from "next/head";
 import classNames from "classnames";
+import Navigation from "./Common/Navigation";
 
 const TIMEOUT = 200;
 const getTransitionStyles = {
@@ -63,6 +64,7 @@ function Layout({ children }) {
           )}
         </Transition>
       </TransitionGroup> */}
+        <Navigation />
       </article>
     </Fragment>
   );

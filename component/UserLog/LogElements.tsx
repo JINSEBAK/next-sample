@@ -64,7 +64,9 @@ export const LogTitle = ({
           {userInfo.name}
         </dt>
         <dd>
-          <Link href="#">
+          <Link
+            href={`/map?name=${logInfo.place}&lat=${logInfo.lat}&lng=${logInfo.lng}`}
+          >
             <a>
               <img src="/images/inc/icon_map_pin.svg" alt="맵 아이콘" />{" "}
               {logInfo.place}

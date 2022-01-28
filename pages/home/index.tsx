@@ -32,7 +32,9 @@ const SAMPLE_LOGS: any = [
       ],
     },
     logInfo: {
-      place: "까뮤양평타운플레이그라운드",
+      place: "대륭포스트타워 6차",
+      lat: 37.481554,
+      lng: 126.88379,
     },
   },
   {

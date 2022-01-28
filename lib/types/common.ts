@@ -14,3 +14,8 @@ export enum ProfileMenu {
   "M002" = "팔로우 취소하기",
   "M003" = "신고하기",
 }
+
+export enum ArchiveMenu {
+  "ARCM001" = "폴더 수정",
+  "ARCM002" = "폴더 삭제",
+}
