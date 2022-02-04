@@ -1,7 +1,7 @@
 import { Button } from "../../component/Common/BasicUIElements";
 
 interface SubHeaderProps {
-  title: string | React.ReactNode;
+  title?: string | React.ReactNode;
   isBack?: boolean;
   onClickOpenClose?: () => void;
 }
