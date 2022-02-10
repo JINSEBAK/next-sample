@@ -64,7 +64,7 @@ function Layout({ children }) {
           )}
         </Transition>
       </TransitionGroup> */}
-        <Navigation />
+        {router.pathname !== "/" && <Navigation />}
       </article>
     </Fragment>
   );

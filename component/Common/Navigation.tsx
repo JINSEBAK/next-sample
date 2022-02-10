@@ -1,6 +1,7 @@
 import { Button } from "./BasicUIElements";
 import classNames from "classnames";
 import { useRouter } from "next/router";
+import { isMobile } from "../../lib/common";
 
 const NAV_BAR = [
   { name: "홈", url: "/home", icon: "icon_home" },
@@ -12,6 +13,13 @@ const NAV_BAR = [
 
 interface NavigationProps {
   page?: string;
+}
+
+declare global {
+  interface Window {
+    mollys: any;
+    webkit?: any;
+  }
 }
 
 const Navigation = ({ page }: NavigationProps) => {
@@ -28,12 +36,26 @@ const Navigation = ({ page }: NavigationProps) => {
     alert("더블클릭");
   };
 
+  // 네이티브 연동
+  const onClickUpload = () => {
+    //
+    if (isMobile.Android()) {
+      window.mollys.showUploadPage();
+    } else if (isMobile.iOS()) {
+      window.webkit?.messageHandlers.showUploadPage.postMessage();
+    }
+  };
+
   return (
     <footer id="footer" className="show">
       <div className="fot_toast_box">
         <p>토스트 메시지</p>
       </div>
-      <Button className="btn_upload_write" content="업로드(등록)" />
+      <Button
+        className="btn_upload_write"
+        content="업로드(등록)"
+        onClick={onClickUpload}
+      />
 
       {/* 현재 홈화면일 경우, 홈 버튼 더블탭시 스크롤 제일 위로 이동 */}
       <ul className="fot_gnb_wrap">

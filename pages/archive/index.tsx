@@ -31,7 +31,7 @@ const ArchivePage = () => {
   return (
     <MainContainer>
       <SubHeader title="내 스크랩" isBack={false} />
-      <Contents className="scrap">
+      <Contents className="ssb_sub has_mg_lr">
         <ContentsInner type="div" className="scrap_frame">
           <ul className="scrap_folder_list">
             {/* 생성 버튼 */}
