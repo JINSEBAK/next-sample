@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 interface InputProps {
   type: string;
-  className: string;
+  className?: string;
   placeholder?: string;
   value?: any;
   onChange?: (e) => React.ChangeEvent<HTMLInputElement>;

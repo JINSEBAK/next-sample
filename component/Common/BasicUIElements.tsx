@@ -24,7 +24,7 @@ export const Button = ({
       onClick={onClick}
       onDoubleClick={onDoubleClick}
     >
-      {content}
+      {content && <span>{content}</span>}
       {children}
     </button>
   );
@@ -34,14 +34,17 @@ export const Button = ({
 interface IconProps {
   name?: string;
   active?: boolean;
+  title?: string;
   onClickHandler?: () => void;
 }
 
-export const Icon = ({ name, active, onClickHandler }: IconProps) => {
+export const Icon = ({ name, active, title, onClickHandler }: IconProps) => {
   return (
     <span
       className={classNames("icon", name, active && "on")}
       onClick={onClickHandler}
-    />
+    >
+      {title && <span className="sr">{title}</span>}
+    </span>
   );
 };

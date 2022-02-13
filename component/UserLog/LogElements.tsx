@@ -64,7 +64,9 @@ export const LogTitle = ({
           {userInfo.name}
         </dt>
         <dd>
-          <Link href="#">
+          <Link
+            href={`/map?name=${logInfo.place}&lat=${logInfo.lat}&lng=${logInfo.lng}`}
+          >
             <a>
               <img src="/images/inc/icon_map_pin.svg" alt="맵 아이콘" />{" "}
               {logInfo.place}
@@ -165,7 +167,7 @@ export const LogMedia = ({ media, alignType }) => {
 };
 
 // 미디어 하단 정보
-export const LogContents = () => {
+export const LogContents = ({ Router }) => {
   const [isLike, setIsLike] = useState(false);
   const [isBookmark, setIsBookmark] = useState(false);
   const [cntLike, setCntLike] = useState(0);
@@ -181,6 +183,11 @@ export const LogContents = () => {
     setIsBookmark(!isBookmark);
   };
 
+  // 댓글 화면 이동
+  const onClickReply = () => {
+    Router.push("/home/reply");
+  };
+
   return (
     <div className="sec_feed_infobox">
       {/* 탑 영역 버튼s */}
@@ -192,7 +199,7 @@ export const LogContents = () => {
           <em />
           <span>1,363</span>
         </Button>
-        <Button className="btn_fdi_comment">
+        <Button className="btn_fdi_comment" onClick={onClickReply}>
           <span>63</span>
         </Button>
         <div className="sec_fdi_posleft">
