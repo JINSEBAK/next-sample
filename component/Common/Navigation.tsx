@@ -7,19 +7,12 @@ const NAV_BAR = [
   { name: "홈", url: "/home", icon: "icon_home" },
   { name: "스토어", url: "/search", icon: "icon_shopping_bag" },
   { name: "디스커버", url: "/", icon: "icon_discover" },
-  { name: "스크랩", url: "/archive", icon: "icon_bookmark" },
+  { name: "스크랩", url: "/scrap", icon: "icon_bookmark" },
   { name: "내 정보", url: "/settings", icon: "icon_user" },
 ];
 
 interface NavigationProps {
   page?: string;
-}
-
-declare global {
-  interface Window {
-    mollys: any;
-    webkit?: any;
-  }
 }
 
 const Navigation = ({ page }: NavigationProps) => {
@@ -42,20 +35,28 @@ const Navigation = ({ page }: NavigationProps) => {
     if (isMobile.Android()) {
       window.mollys.showUploadPage();
     } else if (isMobile.iOS()) {
-      window.webkit?.messageHandlers.showUploadPage.postMessage();
+      window.webkit?.messageHandlers.showUploadPage.postMessage({});
     }
   };
 
   return (
     <footer id="footer" className="show">
-      <div className="fot_toast_box">
+      {/* <div className="fot_toast_box">
         <p>토스트 메시지</p>
-      </div>
-      <Button
-        className="btn_upload_write"
-        content="업로드(등록)"
-        onClick={onClickUpload}
-      />
+      </div> */}
+      {router.pathname === "/home" ? (
+        <Button
+          className="btn_upload_write"
+          content="업로드(등록)"
+          onClick={onClickUpload}
+        />
+      ) : (
+        <Button
+          className="btn_scrap_write"
+          content="보관함(등록)"
+          onClick={() => onClickHandle("/scrap/folder")}
+        />
+      )}
 
       {/* 현재 홈화면일 경우, 홈 버튼 더블탭시 스크롤 제일 위로 이동 */}
       <ul className="fot_gnb_wrap">
@@ -63,7 +64,7 @@ const Navigation = ({ page }: NavigationProps) => {
           return (
             <li key={index}>
               <Button
-                className={classNames(page === item.url && "on")}
+                className={classNames(router.pathname === item.url && "on")}
                 data-url={item.url}
                 onClick={() => onClickHandle(item.url)}
                 //onDoubleClick={onDoubleClickHome}

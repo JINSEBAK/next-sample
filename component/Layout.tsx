@@ -1,10 +1,10 @@
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, useState, Fragment, useLayoutEffect } from "react";
 import { Transition, TransitionGroup } from "react-transition-group";
 import { useRouter } from "next/router";
 import { userAgent, scrollEvent } from "../lib/utils";
 import Head from "next/head";
 import classNames from "classnames";
-import Navigation from "./Common/Navigation";
+import { isMobile } from "../lib/common";
 
 const TIMEOUT = 200;
 const getTransitionStyles = {
@@ -25,6 +25,14 @@ const getTransitionStyles = {
   },
 };
 
+declare global {
+  interface Window {
+    mollys: any;
+    webkit?: any;
+    updateCurrentLocation?: any;
+  }
+}
+
 function Layout({ children }) {
   const router = useRouter();
   const [browser, setBrowser] = useState();
@@ -33,6 +41,20 @@ function Layout({ children }) {
     userAgent();
     scrollEvent();
   }, []);
+
+  useLayoutEffect(() => {
+    window.updateCurrentLocation = () => {
+      console.log("9999");
+    };
+  }, []);
+
+  // AOS 뒤로가기 탭
+  const back = () => {
+    if (isMobile.Android()) {
+      alert("뒤로가기");
+      history.back();
+    }
+  };
 
   return (
     <Fragment>
@@ -64,7 +86,6 @@ function Layout({ children }) {
           )}
         </Transition>
       </TransitionGroup> */}
-        {router.pathname !== "/" && <Navigation />}
       </article>
     </Fragment>
   );

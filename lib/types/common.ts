@@ -15,7 +15,13 @@ export enum ProfileMenu {
   "M003" = "신고하기",
 }
 
-export enum ArchiveMenu {
-  "ARCM001" = "폴더 수정",
-  "ARCM002" = "폴더 삭제",
+export enum ScrapMenu {
+  "SM001" = "폴더 수정",
+  "SM002" = "폴더 삭제",
+}
+
+export enum ScrapDetailMenu {
+  "SDM001" = "콘텐츠 선택",
+  "SDM002" = "폴더 수정",
+  "SDM003" = "폴더 삭제",
 }

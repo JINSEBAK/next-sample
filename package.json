@@ -18,6 +18,7 @@
     "next-images": "^1.8.4",
     "node-sass": "^7.0.0",
     "react": "17.0.2",
+    "react-custom-events": "^1.0.5",
     "react-dom": "17.0.2",
     "react-hammerjs": "^1.0.1",
     "react-modal": "^3.14.4",
