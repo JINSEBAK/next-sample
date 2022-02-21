@@ -29,7 +29,6 @@ declare global {
   interface Window {
     mollys: any;
     webkit?: any;
-    updateCurrentLocation?: any;
   }
 }
 
@@ -41,20 +40,6 @@ function Layout({ children }) {
     userAgent();
     scrollEvent();
   }, []);
-
-  useLayoutEffect(() => {
-    window.updateCurrentLocation = () => {
-      console.log("9999");
-    };
-  }, []);
-
-  // AOS 뒤로가기 탭
-  const back = () => {
-    if (isMobile.Android()) {
-      alert("뒤로가기");
-      history.back();
-    }
-  };
 
   return (
     <Fragment>

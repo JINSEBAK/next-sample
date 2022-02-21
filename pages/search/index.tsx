@@ -18,15 +18,18 @@ const Search = () => {
   const [recommendLists, setRecommendLists] = useState(
     searchResult.RecommendResults
   );
-  const [searchResults, setSearchResults] = useState(
-    searchResult.SearchResults
+  const [searchHistories, setSearchHistories] = useState(
+    searchResult.SearchHistories
+  );
+  const [searchResultsAll, setSearchResultsAll] = useState(
+    searchResult.SearchResultsAll
   );
   const [keyword, setKeyword] = useState("");
   const [activeTab, setActiveTab] = useState(0);
 
   // 검색어가 변경될때마다 실행 - 실시간 검색
   useEffect(() => {
-    setSearchResults(searchResult.SearchResults);
+    setSearchResultsAll(searchResult.SearchResultsAll);
     //setSearchResults([]);
   }, [keyword]);
 
@@ -74,7 +77,7 @@ const Search = () => {
         >
           {keyword.length > 0 ? (
             <>
-              {searchResults.length > 0 ? (
+              {searchResultsAll ? (
                 <>
                   <Tabs
                     menu={SearchTabTitle}
@@ -83,7 +86,8 @@ const Search = () => {
                   />
                   <SearchResultList
                     keyword={keyword}
-                    lists={searchResults}
+                    activeTab={activeTab}
+                    lists={searchResultsAll}
                     highLighter={highLighter}
                   />
                 </>
@@ -97,7 +101,7 @@ const Search = () => {
               <ContentsInner type="section" className="sch_recent">
                 <SearchResultList
                   keyword={keyword}
-                  lists={searchResults}
+                  lists={searchHistories}
                   highLighter={highLighter}
                   onClickDelete={onClickDelete}
                 />

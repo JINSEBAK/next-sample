@@ -26,7 +26,7 @@ const SearchHeader = ({ onChangeInput, onClearKeyword, keyword }) => {
             <Icon name="icon_search" />
             {/* 기본 placeholder는 관리자가 설정한 추천어 -> 키워드 없이 검색 시 해당 추천어로 검색 */}
             <Input
-              type="text"
+              type="type"
               className="sh_input"
               placeholder="검색어를 입력해주세요."
               onChange={(e) => onChangeInput(e)}

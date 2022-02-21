@@ -11,7 +11,7 @@
     { "code": 9, "name": "큰알갱이" },
     { "code": 10, "name": "수제간식" }
   ],
-  "SearchResults": [
+  "SearchHistories": [
     {
       "code": 1,
       "type": "place",
@@ -42,5 +42,65 @@
       "title": "내추럴발란스",
       "profileUrl": "/images/test4.jpeg"
     }
-  ]
+  ],
+  "SearchResultsAll": {
+    "user": [
+      {
+        "code": "u001",
+        "imgUrl": "/images/test2.jpeg",
+        "name": "내추럴그레이그레이그레이"
+      },
+      {
+        "code": "u002",
+        "imgUrl": "/images/test2.jpeg",
+        "name": "내추럴보이"
+      },
+      {
+        "code": "u003",
+        "imgUrl": "/images/test4.jpeg",
+        "name": "내추럴하이"
+      },
+      {
+        "code": "u004",
+        "imgUrl": "/images/test5.jpeg",
+        "name": "내추럴피지크"
+      },
+      {
+        "code": "u005",
+        "imgUrl": "/images/test6.jpeg",
+        "name": "내추럴가든"
+      }
+    ],
+    "family": [
+      {
+        "code": "f001",
+        "imgUrl": "/images/test2.jpeg",
+        "name": "내추럴똘이똘이떵이떵이"
+      },
+      {
+        "code": "f002",
+        "imgUrl": "/images/test2.jpeg",
+        "name": "내추럴몽자"
+      },
+      {
+        "code": "f003",
+        "imgUrl": "/images/test4.jpeg",
+        "name": "내추럴두부"
+      },
+      {
+        "code": "f004",
+        "imgUrl": "/images/test5.jpeg",
+        "name": "내추럴츄르"
+      },
+      {
+        "code": "f005",
+        "imgUrl": "/images/test6.jpeg",
+        "name": "내추럴빵이"
+      }
+    ],
+    "place": [],
+    "hashtag": [],
+    "product": [],
+    "brand": []
+  }
 }

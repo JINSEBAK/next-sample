@@ -7,6 +7,7 @@ interface ButtonProps {
   children?: JSX.Element | JSX.Element[] | string;
   ref?: any;
   disabled?: boolean;
+  style?: {};
   onClick?: (e) => void;
   onDoubleClick?: () => void;
 }
@@ -17,6 +18,7 @@ export const Button = ({
   children,
   onClick,
   onDoubleClick,
+  style,
   disabled = false,
 }: ButtonProps) => {
   return (
@@ -26,6 +28,7 @@ export const Button = ({
       onClick={onClick}
       onDoubleClick={onDoubleClick}
       disabled={disabled}
+      style={style}
     >
       {content && <span>{content}</span>}
       {children}

@@ -3,10 +3,20 @@ export type ChildrenProps = JSX.Element | JSX.Element[];
 export enum SearchTabTitle {
   "all" = "전체",
   "user" = "유저",
+  "family" = "친구",
   "hashtag" = "#태그",
   "place" = "장소",
   "product" = "상품",
-  "brand" = "brand",
+  "brand" = "브랜드",
+}
+
+export enum SearchTabClassName {
+  "user" = "sch_img_list",
+  "family" = "sch_img_list type_rc",
+  "place" = "gallery_list",
+  "hastag" = "sch_recommend_list xscroll_list",
+  "product" = "gallery_list",
+  "brand" = "sch_img_list type_bd xscroll_list",
 }
 
 export enum ProfileMenu {

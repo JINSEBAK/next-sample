@@ -98,7 +98,7 @@ interface TabsProps {
 export const Tabs = ({ menu, activeTab, onClickTab }: TabsProps) => {
   return (
     <div className="s_tabs">
-      <ul className="line_tabs">
+      <ul className="line_tabs xscroll_list">
         {Object.keys(menu).map((item, index) => {
           return (
             <li
