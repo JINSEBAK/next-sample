@@ -1,3 +1,30 @@
+import { Button } from "../Common/BasicUIElements";
+
+export const SearchResultContainer = ({ children }) => {
+  return (
+    <div className="sesarch_content_result">
+      <div className="s_tab_contents">
+        <section>{children}</section>
+      </div>
+    </div>
+  );
+};
+
+interface PlaceItemProps {
+  onClick?: () => void;
+  name: string;
+  address: string;
+}
+
+export const SearchPlaceItem = ({ onClick, name, address }: PlaceItemProps) => {
+  return (
+    <Button onClick={onClick}>
+      <span className="name">{name}</span>
+      <span className="address">{address}</span>
+    </Button>
+  );
+};
+
 export const User = () => {
   return <div>user</div>;
 };
