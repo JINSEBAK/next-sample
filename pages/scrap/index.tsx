@@ -44,7 +44,13 @@ const ScrapPage = () => {
   const onSelectMenu = (item: string) => {
     console.log(item);
     if (item === "SM001") {
-      router.push("/scrap/detail");
+      //router.push("/scrap/detail");
+      router.push({
+        pathname: "/scrap/detail",
+        query: {
+          storageId: item,
+        },
+      });
     } else {
       alert("삭제할꺼니?");
     }
