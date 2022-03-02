@@ -4,12 +4,14 @@ import { ChangeEvent } from "react";
 
 interface SelectItemProps {
   id: string;
+  imgUrl: string;
   selectMode: boolean;
   selectedList?: { id: string }[];
 }
 
 const SelectableItem = ({
   id,
+  imgUrl,
   selectMode,
   selectedList,
   isSelected,
@@ -22,7 +24,7 @@ const SelectableItem = ({
 
   return (
     <li ref={selectableRef} className="tick" id={`s-${id}`}>
-      <Button content="일시품절">
+      <Button>
         {selectMode && (
           <>
             <input
@@ -36,7 +38,7 @@ const SelectableItem = ({
             </label>
           </>
         )}
-        <img src={`/images/test7.jpeg`} alt="이미지" />
+        <img src={imgUrl} alt="이미지" />
       </Button>
     </li>
   );

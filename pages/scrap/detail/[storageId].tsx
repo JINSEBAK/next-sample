@@ -14,11 +14,36 @@ import SelectableComponent from "../../../component/Scrap/SelectableItem";
 import Selecto from "react-selecto";
 
 const SAMPLE_DATAS = [
-  { id: 1, type: "", imgUrl: "test_7.jpeg" },
-  { id: 2, type: "", imgUrl: "test_4.jpeg" },
-  { id: 3, type: "", imgUrl: "test_2.jpeg" },
-  { id: 4, type: "", imgUrl: "test_5.jpeg" },
-  { id: 5, type: "", imgUrl: "" },
+  { id: 1, type: "", imgUrl: "/images/test7.jpeg" },
+  { id: 2, type: "", imgUrl: "/images/test4.jpeg" },
+  { id: 3, type: "", imgUrl: "/images/test2.jpeg" },
+  { id: 4, type: "", imgUrl: "/images/test5.jpeg" },
+  { id: 5, type: "", imgUrl: "/images/test7.jpeg" },
+  { id: 6, type: "", imgUrl: "/images/test4.jpeg" },
+  { id: 7, type: "", imgUrl: "/images/test2.jpeg" },
+  { id: 8, type: "", imgUrl: "/images/test5.jpeg" },
+  { id: 9, type: "", imgUrl: "/images/test7.jpeg" },
+  { id: 10, type: "", imgUrl: "/images/test4.jpeg" },
+  { id: 11, type: "", imgUrl: "/images/test2.jpeg" },
+  { id: 12, type: "", imgUrl: "/images/test5.jpeg" },
+  { id: 13, type: "", imgUrl: "/images/test2.jpeg" },
+  { id: 14, type: "", imgUrl: "/images/test5.jpeg" },
+  { id: 15, type: "", imgUrl: "/images/test7.jpeg" },
+  { id: 16, type: "", imgUrl: "/images/test4.jpeg" },
+  { id: 17, type: "", imgUrl: "/images/test2.jpeg" },
+  { id: 18, type: "", imgUrl: "/images/test5.jpeg" },
+  { id: 19, type: "", imgUrl: "/images/test7.jpeg" },
+  { id: 20, type: "", imgUrl: "/images/test4.jpeg" },
+  { id: 21, type: "", imgUrl: "/images/test2.jpeg" },
+  { id: 22, type: "", imgUrl: "/images/test5.jpeg" },
+  { id: 23, type: "", imgUrl: "/images/test2.jpeg" },
+  { id: 24, type: "", imgUrl: "/images/test5.jpeg" },
+  { id: 25, type: "", imgUrl: "/images/test7.jpeg" },
+  { id: 26, type: "", imgUrl: "/images/test4.jpeg" },
+  { id: 27, type: "", imgUrl: "/images/test2.jpeg" },
+  { id: 28, type: "", imgUrl: "/images/test5.jpeg" },
+  { id: 29, type: "", imgUrl: "/images/test7.jpeg" },
+  { id: 30, type: "", imgUrl: "/images/test4.jpeg" },
 ];
 
 interface selectedListType {
@@ -155,6 +180,7 @@ const ScrapDetail = () => {
               <SelectableComponent
                 key={index}
                 id={`sel${item.id}`}
+                imgUrl={item.imgUrl}
                 selectMode={selectMode}
                 selectedList={selectedList}
               />
