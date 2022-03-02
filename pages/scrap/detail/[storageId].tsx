@@ -113,7 +113,7 @@ const ScrapDetail = () => {
         }
       />
       <Contents className="scrap">
-        <Selecto
+        {/* <Selecto
           dragContainer={".scrap_img_list"}
           selectByClick={true}
           continueSelect={true}
@@ -140,7 +140,7 @@ const ScrapDetail = () => {
               </Button>
             </li>
           ))}
-        </ul>
+        </ul> */}
 
         <SelectableGroup
           className="main"
