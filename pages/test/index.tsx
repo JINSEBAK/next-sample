@@ -49,7 +49,7 @@ const NativeWebTestPage = () => {
     if (isMobile.Android()) {
       window.mollys.getCurrentLocation();
     } else if (isMobile.iOS()) {
-      window.webkit?.messsageHandlers.openBrowser.getCurrentLocation({});
+      window.webkit?.messsageHandlers.getCurrentLocation.postMessage({});
     }
   };
 
@@ -64,7 +64,7 @@ const NativeWebTestPage = () => {
     if (isMobile.Android()) {
       window.mollys.showToast(dataMap);
     } else if (isMobile.iOS()) {
-      window.webkit?.messsageHandlers.openBrowser.showToast({ dataMap });
+      window.webkit?.messsageHandlers.showToast.postMessage({ dataMap });
     }
   };
 
