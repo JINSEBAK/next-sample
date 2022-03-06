@@ -16,8 +16,6 @@ import {
 } from "../../../component/search/SearchResultElements";
 import NoSearchResult from "../../../component/Common/NoSearchResult";
 import Script from "next/script";
-import { MapContainer } from "../../map/MapElements";
-import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 const PlaceSearchPage = () => {
   const [tmpKey, setTmpKey] = useState("");
@@ -173,7 +171,9 @@ const PlaceSearchPage = () => {
       />
       <Contents className="ssg_search">
         <SearchResultContainer>
-          <Map center={{ lat: 37.566826, lng: 126.9786567 }} />
+          {position.lat && position.lng && (
+            <div className="map_area" id="map" />
+          )}
           {searchResult.length > 0 ? (
             <div className="s_place_result" style={{ position: "relative" }}>
               <ul ref={containerRef}>

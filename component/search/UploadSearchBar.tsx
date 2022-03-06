@@ -13,7 +13,7 @@ const UploadSearchBar = ({
       <h2 className="sr">{title}</h2>
       <header id="header">
         <div className="search_header_form type_upload">
-          <div className="sh_form_wrap type_upload">
+          <div className="sh_form_wrap">
             <Icon name="icon_search" />
             <input
               type="text"
