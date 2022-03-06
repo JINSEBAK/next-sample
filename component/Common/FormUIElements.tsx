@@ -7,7 +7,7 @@ interface InputProps {
   className?: string;
   placeholder?: string;
   value?: any;
-  onChange?: (e) => React.ChangeEvent<HTMLInputElement>;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const Input = ({
   type,

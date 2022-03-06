@@ -1,10 +1,10 @@
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, useState, Fragment, useLayoutEffect } from "react";
 import { Transition, TransitionGroup } from "react-transition-group";
 import { useRouter } from "next/router";
 import { userAgent, scrollEvent } from "../lib/utils";
 import Head from "next/head";
 import classNames from "classnames";
-import Navigation from "./Common/Navigation";
+import { isMobile } from "../lib/common";
 
 const TIMEOUT = 200;
 const getTransitionStyles = {
@@ -25,7 +25,13 @@ const getTransitionStyles = {
   },
 };
 
-// Transition 동작이 현재 굉장히 이상함
+declare global {
+  interface Window {
+    mollys: any;
+    webkit?: any;
+  }
+}
+
 function Layout({ children }) {
   const router = useRouter();
   const [browser, setBrowser] = useState();
@@ -65,7 +71,6 @@ function Layout({ children }) {
           )}
         </Transition>
       </TransitionGroup> */}
-        {router.pathname !== "/" && <Navigation />}
       </article>
     </Fragment>
   );

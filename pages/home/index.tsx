@@ -9,6 +9,7 @@ import Navigation from "../../component/Common/Navigation";
 import LogContainer from "../../component/UserLog";
 import RecommendFriends from "../../component/RecommendFriends";
 import SlideModal from "../../component/Common/SlideModal";
+import { castTouchToMouseEvent } from "react-selectable-fast/lib/utils";
 
 const SAMPLE_LOGS: any = [
   {
@@ -96,6 +97,21 @@ const Home = () => {
   const onClickModal = () => {
     setOpen(false);
   };
+
+  // const setView = (params) => {
+  //   alert(params);
+  //   console.log(params);
+  // };
+
+  useEffect(() => {
+    const abc = new CustomEvent("setView", {
+      detail: {
+        name: "cat",
+      },
+    });
+    window.addEventListener("setView", () => {});
+    window.dispatchEvent(abc);
+  }, []);
 
   return (
     <MainContainer>

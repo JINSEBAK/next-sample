@@ -1,21 +1,22 @@
 @charset "utf-8";
 #container.scrap {margin-top: 0; margin-bottom: 0;}
 /*보관함*/ 
-#container .scrap_frame {width: calc(100% - 32px); margin: auto; }
 #container .scrap_folder_list {display: flex; flex-flow: row wrap; justify-content: space-between;}
-#container .scrap_frame li {width: calc(50% - 6px); height: calc(50vw - 22px); margin-bottom: 12px; position: relative; overflow: hidden;}
-#container .scrap_frame li a {display: flex; position: relative; width: 100%; height: 100%; overflow: hidden; justify-content: center; align-content: center; border-radius: 16px; background: #a8c4e1;}
-#container .scrap_frame li a.no_dim:before {opacity: 0;}
-#container .scrap_frame li a:before {content: ""; display: block; width: 100%; height: 100%; background: #000; opacity: 0.4; position: absolute; top: 0; left: 0; z-index: 1;}
-#container .scrap_frame li a:active:before {opacity: 0.5}
-#container .scrap_frame li a.no_dim:active:before {opacity: 0.05;}
-#container .scrap_frame li a span {position: absolute; z-index: 2; left: 0; display: block; width: 100%; font-size: 16px; color: #fff; font-weight: 700; text-align: center; top: calc(50% - 8px);}
-#container .scrap_frame li a img {object-fit: cover;}
-#container .scrap_frame li button.scrap_fmore_btn {width: 45px; height: 45px; background: transparent url(/images/inc/icon_more_vertical_w.svg) center center no-repeat; overflow: hidden; text-indent: -999px; border-radius: 5px 16px 0 16px; -webkit-background-size: auto 26px; background-size: auto 26px; position: absolute; top: 0; right: 0; z-index: 3;}
-#container .scrap_frame li a.base_folder {border: 2px dashed #a8c4e1; background-color: transparent; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-#container .scrap_frame li a.base_folder span {color: #a8c4e1; top: calc(50% - 22px);}
-#container .scrap_frame li a.base_folder span em {display: block; margin: 8px auto 0; background: transparent url(/images/inc/icon_add_plus.svg) center center no-repeat; width: 24px;	height: 24px;}
-#container .scrap_frame li button:active {background-color: rgba(46, 26, 70, 0.04);}
+#container .scrap_folder_list li {width: calc(50% - 6px); height: calc(50vw - 22px); margin-bottom: 12px; position: relative; overflow: hidden;}
+#container .scrap_folder_list li a {display: flex; position: relative; width: 100%; height: 100%; overflow: hidden; justify-content: center; align-content: center; border-radius: 16px; background: #a8c4e1;}
+#container .scrap_folder_list li a.no_dim:before {opacity: 0;}
+#container .scrap_folder_list li a:before {content: ""; display: block; width: 100%; height: 100%; background: #000; opacity: 0.4; position: absolute; top: 0; left: 0; z-index: 1;}
+#container .scrap_folder_list li a:active:before {opacity: 0.5}
+#container .scrap_folder_list li a.no_dim:active:before {opacity: 0.05;}
+#container .scrap_folder_list li a span {position: absolute; z-index: 2; left: 0; display: block; width: 100%; font-size: 16px; color: #fff; font-weight: 700; text-align: center; top: calc(50% - 8px);}
+#container .scrap_folder_list li a img {object-fit: cover;}
+#container .scrap_folder_list li button.scrap_fmore_btn {width: 45px; height: 45px; background: transparent url(/images/inc/icon_more_vertical_w.svg) center center no-repeat; overflow: hidden; text-indent: -999px; border-radius: 5px 16px 0 16px; -webkit-background-size: auto 26px; background-size: auto 26px; position: absolute; top: 0; right: 0; z-index: 3;}
+#container .scrap_msgguide_box {background: #78a7cb; color: #fff; font-size: 12px; font-weight: 500; line-height: 1.4; z-index: 3; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; padding: 12px; width: 80%; text-align: center; margin: auto;}
+#container .scrap_msgguide_box img {width: 16px; height: 16px; vertical-align: top; display: inline-block; margin: 1px 5px 0 0;}
+
+#container .scrap_folder_list li button:active {background-color: rgba(46, 26, 70, 0.04);}
+#footer .btn_scrap_write {position: absolute; top: -66px; right: 16px; background: #78a7cb url(/images/inc/icon_addfolder.svg) center center no-repeat; width: 48px; height: 48px; text-indent: -999px; overflow: hidden; border-radius: 100%; box-shadow: 0px 0px 5px rgba(0,0,0,0.2); z-index: 1002;}
+#footer .btn_scrap_write:active {background-color: #6494b9; -webkit-tap-highlight-color: #6494b9; transform: scale(1.2);}
 /*보관함 상세*/
 #container .scrap_img_list {display: flex; flex-flow: row wrap; justify-content: flex-start;}
 #container .scrap_img_list li {width: calc(33.33% - 1px); height: 33.32vw; margin-bottom: 1px; position: relative; overflow: hidden; margin-left: 1px;}
@@ -23,7 +24,7 @@
 #container .scrap_img_list li:nth-child(3n) {width: 33.33%;}
 #container .scrap_img_list li button {display: flex; position: relative; width: 100%; height: 100%; overflow: hidden; justify-content: center; align-content: center; background: #F5F5F8;}
 #container .scrap_img_list li button:before {content: ""; display: block; width: 100%; height: 100%; background: #000; opacity: 0; position: absolute; top: 0; left: 0; z-index: 4;}
-#container .scrap_img_list li button:active:before {opacity: 0.2;}
+#container .scrap_img_list li button:active:before {opacity: 0.1;}
 #container .scrap_img_list li button .scrap_movie_icon {width: 13px; height: 15px; background: transparent url(/images/inc/icon_movieplay.svg) center center no-repeat; -webkit-background-size: 100%; background-size: 100%; position: absolute; right: 10px; top: 10px; z-index: 2;}
 #container .scrap_img_list li button span {position: absolute; z-index: 2; left: 0; bottom: 0; display: flex; width: 100%; height: 28px; font-size: 12px; color: #fff; font-weight: 500; background: rgba(46, 26, 70, 0.5); justify-content: center; align-items: center;}
 #container .scrap_img_list li button img {object-fit: cover; flex: 1; width: 100%; height: 100%;}
@@ -48,11 +49,6 @@
 
 /*폴더수정,삭제, 추가*/
 #container .scrap_folder_mdimg {width: 100%; height: 150px; background: transparent url(/images/inc/icon_mollys_scrap.svg) center center no-repeat;}
-#container .scrap_inp_box dt {font-size: 12px;	font-weight: 500; margin-bottom: 8px;}
-#container .scrap_inp_box dd {font-size: 12px; color: rgba(46, 26, 70, 0.3); font-weight: 500; margin-bottom: 8px;}
-#container .scrap_inp_box input {width: 100%; height: 48px; border: 1px solid #78a7cb; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; color: #000; font-size: 14px; font-weight: 500; border-radius: 8px; text-indent: 12px; transition: none;}
-#container .scrap_inp_box input:not(:placeholder-shown) {border: 1px solid #f5f5f8; background: #f5f5f8;}
-
 
 /*****************************************************************************/
 /*상세 폴더선택 팝업*/

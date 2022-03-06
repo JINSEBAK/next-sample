@@ -3,11 +3,14 @@ import { Button } from "../../component/Common/BasicUIElements";
 interface SubHeaderProps {
   title?: string | React.ReactNode;
   isBack?: boolean;
+  leftButton?: React.ReactNode;
+  rightButton?: React.ReactNode;
   onClickOpenClose?: () => void;
 }
 const SubHeader = ({
   title,
   isBack = true,
+  rightButton,
   onClickOpenClose,
 }: SubHeaderProps) => {
   // 뒤로가기
@@ -26,11 +29,12 @@ const SubHeader = ({
       <h2>
         <span>{title}</span>
       </h2>
-      <Button
+      {rightButton}
+      {/* <Button
         className="btn_hdmore btn_hdright"
         content="HD MORE"
         onClick={onClickOpenClose}
-      />
+      /> */}
     </header>
   );
 };

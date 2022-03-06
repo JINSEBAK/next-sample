@@ -25,6 +25,8 @@ import "../styles/style_home.css";
 import "../styles/style_home1.css";
 import "../styles/style_home2.css";
 import "../styles/style_scrap.css";
+import "../styles/style_search.css";
+import "../styles/style_upload.css";
 
 // CHECK! 공통 CSS외에는 GNB별로 분리해서 전달하기로 함. 각 페이지별로 CSS module 파일 생성할 것
 
