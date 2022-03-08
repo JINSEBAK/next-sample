@@ -38,7 +38,7 @@ const SamplePage = () => {
   const [keyword, setKeyword] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [map, setMap] = useState();
-  const [marker, setMarker] = useState({ lat: 0, lng: 0 });
+  const [markers, setMarkers] = useState([]);
   const [page, setPage] = useState(1);
   const [position, setPosition] = useState({ lat: 37.57182, lng: 126.983321 });
   const scrollRef = useRef(null);
@@ -46,30 +46,53 @@ const SamplePage = () => {
   useEffect(() => {
     if (!map) return;
     const ps = new window.kakao.maps.services.Places();
+
+    // 장소검색 API로 제공하는 장소는 최대 45개
     if (keyword.length > 0) {
-      ps.keywordSearch(keyword, (data, status, pagination) => {
-        console.log(pagination);
-        if (status === window.kakao.maps.services.Status.OK) {
-          setSearchResult(data);
-          setMarker({ lat: data[0].y, lng: data[0].x });
-          console.log(pagination.current);
-          setPage(pagination.current);
-          scrollRef.current.scrollTop = 0;
-        }
-      });
-    } else {
-      ps.categorySearch(
-        "CE7,CS2,SW8",
+      ps.keywordSearch(
+        keyword,
         (data, status, pagination) => {
+          console.log(pagination);
           if (status === window.kakao.maps.services.Status.OK) {
-            console.log(data);
             setSearchResult(data);
+
+            let markers = [];
+            data.map((place, index) => {
+              markers.push({ position: { lat: place.y, lng: place.x } });
+            });
+            setMarkers(markers);
+          } else if (status === window.kakao.maps.services.Status.ZERO_RESULT) {
+            setSearchResult([]);
+            setMarkers([]);
           }
         },
         {
           location: map.getCenter(),
           sort: window.kakao.maps.services.SortBy.DISTANCE, // 거리순으로 정렬
-          radius: 3000,
+          radius: 15000,
+        }
+      );
+    } else {
+      // 기본적으로 다중 카테고리 검색은 지원하지 않음
+      // 다중 카테고리 검색 검색 api를 카테고리만큼 호출한 후 데이터 처리
+      ps.categorySearch(
+        "CE7",
+        (data, status, pagination) => {
+          if (status === window.kakao.maps.services.Status.OK) {
+            console.log(data);
+            setSearchResult(data);
+
+            let markers = [];
+            data.map((place, index) => {
+              markers.push({ position: { lat: place.y, lng: place.x } });
+            });
+            setMarkers(markers);
+          }
+        },
+        {
+          location: map.getCenter(),
+          sort: window.kakao.maps.services.SortBy.DISTANCE, // 거리순으로 정렬
+          radius: 15000,
         }
       );
     }
@@ -106,14 +129,6 @@ const SamplePage = () => {
     }
   };
 
-  // 목록에서 장소 선택
-  const onClickItem = (place) => {
-    const moveLatLon = new window.kakao.maps.LatLng(place.y, place.x);
-    map.panTo(moveLatLon);
-
-    setMarker({ lat: place.y, lng: place.x });
-  };
-
   return (
     <>
       <MainContainer>
@@ -132,13 +147,8 @@ const SamplePage = () => {
         <Contents className="ssg_search">
           <SearchResultContainer>
             <Map
-              center={
-                keyword.length > 0
-                  ? { lat: marker.lat, lng: marker.lng }
-                  : { lat: position.lat, lng: position.lng }
-              }
+              center={{ lat: position.lat, lng: position.lng }}
               style={{ width: "100%", height: "320px" }}
-              level={8}
               onCreate={setMap}
               onCenterChanged={(map) =>
                 setState({
@@ -147,8 +157,12 @@ const SamplePage = () => {
                   lng: map.getCenter().getLng(),
                 })
               }
+              // 레벨은 1~14, 숫자가 작을 수록 확대 수준이 높다
+              level={3}
             >
-              <MapMarker position={{ lat: marker.lat, lng: marker.lng }} />
+              {markers.map((marker, index) => {
+                return <MapMarker key={index} position={marker.position} />;
+              })}
             </Map>
             {searchResult.length > 0 && (
               <div className="s_place_result" style={{ position: "relative" }}>
@@ -160,7 +174,6 @@ const SamplePage = () => {
                           name={place.place_name}
                           address={place.address_name}
                           placeInfo={place}
-                          onClickItem={onClickItem}
                         />
                       </li>
                     );

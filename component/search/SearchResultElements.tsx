@@ -11,14 +11,20 @@ export const SearchResultContainer = ({ children }) => {
 };
 
 interface PlaceItemProps {
-  onClick?: () => void;
   name: string;
   address: string;
+  placeInfo: any;
+  onClickItem?: (place) => void;
 }
 
-export const SearchPlaceItem = ({ onClick, name, address }: PlaceItemProps) => {
+export const SearchPlaceItem = ({
+  name,
+  address,
+  placeInfo,
+  onClickItem,
+}: PlaceItemProps) => {
   return (
-    <Button onClick={onClick}>
+    <Button onClick={() => onClickItem(placeInfo)}>
       <span className="name">{name}</span>
       <span className="address">{address}</span>
     </Button>

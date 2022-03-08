@@ -24,6 +24,9 @@ const UploadSearchBar = ({
               value={keyword}
             />
           </div>
+          {keyword.length > 0 && (
+            <Button className="btn_kwd_delete" onClick={onClear} />
+          )}
           <Button
             className="btn_cancel"
             content="취소"

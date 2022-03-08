@@ -44,7 +44,7 @@ const Header = () => {
         <Button
           className="btn_hdmap"
           content="HD MAP"
-          onClick={() => onClickHandle("/map")}
+          onClick={() => onClickHandle("/search/place")}
         />
       </div>
     </header>
