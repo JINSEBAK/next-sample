@@ -4,13 +4,16 @@ import {
 } from "../../../component/Common/CommonUIElements";
 import { Button } from "../../../component/Common/BasicUIElements";
 import Script from "next/script";
-import { useEffect, useState, useLayoutEffect, Fragment } from "react";
+import { useEffect, useState, useLayoutEffect, Fragment, useRef } from "react";
 import {
   Map,
   MapMarker,
   MarkerClusterer,
   CustomOverlayMap,
 } from "react-kakao-maps-sdk";
+import { BottomSheet } from "react-spring-bottom-sheet";
+import classNames from "classnames";
+import "react-spring-bottom-sheet/dist/style.css";
 
 const place = {
   lat: 37.571803,
@@ -533,6 +536,10 @@ const PlaceMapPage = () => {
   const [position, setPosition] = useState({ lat: 0, lng: 0 }); // 네이티브로부터 받은 사용자 위치 정보
   const [markers, setMarkers] = useState([]);
   const [pan, setPan] = useState(false);
+  const [open, setOpen] = useState(true); // 피드 팝업
+  const [snap, setSnap] = useState(false);
+
+  const sheetRef = useRef(null);
 
   // 샘플 데이터 생성
   useLayoutEffect(() => {
@@ -566,6 +573,14 @@ const PlaceMapPage = () => {
     navigator.geolocation.getCurrentPosition((pos) => {
       setPosition({ lat: pos.coords.latitude, lng: pos.coords.longitude });
     });
+  };
+
+  const onDismiss = () => {
+    setOpen(false);
+  };
+
+  const onClickSnap = () => {
+    setSnap(!snap);
   };
 
   return (
@@ -631,341 +646,37 @@ const PlaceMapPage = () => {
           </Button>
         </div>
       </Contents>
-      <aside id="aside" className="has_pop_search_place on">
-        <div
-          id="pop_slider3"
-          className="pop_btslider2_wrap pop_close_area show pop_search_place"
-        >
-          {pan && (
-            <button type="button" className="btn_map_refresh">
-              지도 정보를 새로 불러오세요
-            </button>
-          )}
-          <Button className="pop_slideclose_btn" />
-          <div className="pop_contents_wrap pop_search_place">
-            <div className="search_result_item pop_sp_info">
-              <div className="s_img">
-                <img src="/images/test6.jpeg" alt="" />
-              </div>
-              <div className="s_info">
-                <span className="info_main">내 근처 인기 피드</span>
-                <span className="info_sub">
-                  <span>강남구</span>
-                  <span className="middot"></span>
-                  <span>피드 1,800+</span>
-                </span>
-              </div>
-            </div>
-            <div className="pop_sp_tabs">
-              <ul className="line_tabs type_equal">
-                <li className="tab_item list_item is_active">
-                  <a href="#">인기</a>
-                </li>
-                <li className="tab_item list_item">
-                  <a href="#">친구들</a>
-                </li>
-                <li className="tab_item list_item">
-                  <a href="#">사진 속 인기상품</a>
-                </li>
-              </ul>
-            </div>
-            <div className="pop_sp_tab_contents">
-              <ul>
-                <li className="pop_sp_item">
-                  <div className="search_result_item">
-                    <div className="s_img">
-                      <img src="/images/test4.jpeg" alt="" />
-                    </div>
-                    <div className="s_info">
-                      <span className="info_main">논현펫카페</span>
-                      <span className="info_sub">
-                        <span>강남구</span>
-                        <span className="middot"></span>
-                        <span>피드 1,800+</span>
-                      </span>
-                      <a href="#" className="btn_more">
-                        정보 더 보기
-                      </a>
-                    </div>
-                  </div>
-                  <ul className="gallery_list xscroll_list">
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test7.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_slide">
-                          <span className="sr">여러 이미지</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test8.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_slide">
-                          <span className="sr">여러 이미지</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test9.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_video">
-                          <span className="sr">비디오</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test7.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_slide">
-                          <span className="sr">여러 이미지</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test8.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_slide">
-                          <span className="sr">여러 이미지</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li className="list_item">
-                      {/* 더보기가 있는 경우 : has_btn_more 클래스 추가, .gallery_more 추가 */}
-                      <a href="#" className="has_btn_more">
-                        <div className="gallery_more">
-                          <em>500+</em>
-                          <span>더보기</span>
-                        </div>
-                        <img
-                          src="/images/test9.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_video">
-                          <span className="sr">비디오</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="pop_sp_item">
-                  <div className="search_result_item">
-                    <div className="s_img">
-                      <img src="/images/test3.jpeg" alt="" />
-                    </div>
-                    <div className="s_info">
-                      <span className="info_main">논현펫카페</span>
-                      <span className="info_sub">
-                        <span>강남구</span>
-                        <span className="middot"></span>
-                        <span>피드 1,800+</span>
-                      </span>
-                      <a href="#" className="btn_more">
-                        정보 더 보기
-                      </a>
-                    </div>
-                  </div>
-                  <ul className="gallery_list xscroll_list">
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test7.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_slide">
-                          <span className="sr">여러 이미지</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test8.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_slide">
-                          <span className="sr">여러 이미지</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test9.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_video">
-                          <span className="sr">비디오</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test7.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_slide">
-                          <span className="sr">여러 이미지</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test8.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_slide">
-                          <span className="sr">여러 이미지</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="pop_sp_item">
-                  <div className="search_result_item">
-                    <div className="s_img">
-                      <img src="/images/test2.jpeg" alt="" />
-                    </div>
-                    <div className="s_info">
-                      <span className="info_main">논현펫카페</span>
-                      <span className="info_sub">
-                        <span>강남구</span>
-                        <span className="middot"></span>
-                        <span>피드 1,800+</span>
-                      </span>
-                      <a href="#" className="btn_more">
-                        정보 더 보기
-                      </a>
-                    </div>
-                  </div>
-                  <ul className="gallery_list xscroll_list">
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test7.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_slide">
-                          <span className="sr">여러 이미지</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test8.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_slide">
-                          <span className="sr">여러 이미지</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test9.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_video">
-                          <span className="sr">비디오</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li className="list_item">
-                      <a href="#">
-                        <img
-                          src="/images/test7.jpeg"
-                          className="thumb"
-                          alt=""
-                        />
-                        <span className="icon icon_slide">
-                          <span className="sr">여러 이미지</span>
-                        </span>
-                        <span className="icon icon_place">
-                          <span className="sr">장소</span>
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </aside>
+
+      <BottomSheet
+        open
+        ref={sheetRef}
+        skipInitialTransition
+        defaultSnap={({ maxHeight }) => maxHeight / 2 - 15}
+        snapPoints={({ maxHeight }) => [
+          maxHeight - maxHeight / 20,
+          maxHeight / 2 - 15,
+          50,
+        ]}
+        expandOnContentDrag={true}
+      >
+        <ul style={{ padding: "16px" }}>
+          {[...Array(10)].map((item, index) => {
+            return (
+              <li key={index}>
+                <div
+                  style={{
+                    border: "1px solid #eee",
+                    padding: "16px",
+                    marginBottom: "8px",
+                  }}
+                >
+                  {index}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </BottomSheet>
     </MainContainer>
   );
 };
