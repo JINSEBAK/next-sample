@@ -6,12 +6,12 @@ import {
 import SubHeader from "../../component/Common/SubHeader";
 import { useState } from "react";
 import Link from "next/link";
-import SlidePopup from "../../component/Common/SlidePopup";
-import { ProfileMenu } from "../../lib/types/common";
-import { Button, Icon } from "../../component/Common/BasicUIElements";
+import { Button } from "../../component/Common/BasicUIElements";
 import { UserProfileSummary } from "./ProfileElements";
 import { useRouter } from "next/router";
 import ThumbnailFeed from "../../component/Feed/ThumbnailFeed";
+import BottomSheet from "../../component/Common/BottomSheet";
+import SelectMenu from "../../component/Common/SelectMenu";
 
 const Profile = () => {
   //
@@ -37,6 +37,13 @@ const Profile = () => {
       <SubHeader
         onClickOpenClose={onClickOpenClose}
         title={router.query.name}
+        rightButton={
+          <Button
+            className="btn_hdmore btn_hdright"
+            content="HD MORE"
+            onClick={() => setOpen(true)}
+          />
+        }
       />
       <Contents className="ssg_profile">
         <ContentsInner type="section" className="sec_profile">
@@ -127,12 +134,17 @@ const Profile = () => {
         </ContentsInner>
       </Contents>
 
-      <SlidePopup
+      <BottomSheet
         open={open}
-        onClose={onClickOpenClose}
+        draggable={false}
+        className="pop_search_place"
         overlayClickClose={true}
-        menu={ProfileMenu}
-        onSelect={onClickMenu}
+        menu={
+          <SelectMenu
+            menu={["공유하기", "팔로우 취소하기", "신고하기"]}
+            onClickMenu={onClickMenu}
+          />
+        }
       />
     </MainContainer>
   );

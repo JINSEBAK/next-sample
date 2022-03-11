@@ -1,15 +1,11 @@
 import { useEffect, useState, Fragment, useLayoutEffect } from "react";
-import {
-  Transition,
-  TransitionGroup,
-  CSSTransition,
-} from "react-transition-group";
+
 import { useRouter } from "next/router";
 import { userAgent, scrollEvent } from "../lib/utils";
 import Head from "next/head";
 import classNames from "classnames";
 
-const TIMEOUT = 200;
+const TIMEOUT = 500;
 const getTransitionStyles = {
   entering: {
     position: `absolute`,
@@ -25,6 +21,9 @@ const getTransitionStyles = {
     transition: `opacity ${TIMEOUT}ms ease-in-out, transform ${TIMEOUT}ms ease-in-out`,
     opacity: 1,
     transform: `translateX(-50px)`,
+  },
+  exited: {
+    opacity: 0,
   },
 };
 
@@ -60,20 +59,19 @@ function Layout({ children }) {
         <meta name="format-detection" content="telephone=no" />
       </Head>
       <article className={classNames(router.pathname === "/home" && "pullto")}>
-        {/* {children} */}
-        <TransitionGroup style={{ position: "relative" }}>
-          <Transition key={router.pathname} timeout={100}>
-            {children}
-            {/* {(status) => (
+        {children}
+        {/* <TransitionGroup style={{ position: "relative" }}>
+          <Transition key={router.pathname} timeout={300}>
+            {(status) => (
               <div
                 style={{ ...getTransitionStyles[status] }}
                 className="container"
               >
                 {children}
               </div>
-            )} */}
+            )}
           </Transition>
-        </TransitionGroup>
+        </TransitionGroup> */}
       </article>
     </Fragment>
   );

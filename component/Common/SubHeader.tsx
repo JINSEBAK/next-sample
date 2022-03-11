@@ -17,6 +17,7 @@ const SubHeader = ({
   const onClickBack = () => {
     history.back();
   };
+
   return (
     <header id="header">
       {isBack && (

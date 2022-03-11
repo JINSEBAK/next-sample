@@ -15,32 +15,50 @@
  * 각 컴포넌트별로 CSS 생성하고 싶을 때는 [name].module.css
  * TODO! 현재 퍼블리싱된 css 파일을 모듈로 사용할 수 있는지 확인!
  */
-// import "../styles/globals.css";
 
 // CSS import
 import "../styles/reset.css";
 import "../styles/font.css";
 import "../styles/common.css";
 import "../styles/style_home.css";
-// import "../styles/style_home1.css";
-// import "../styles/style_home2.css";
 import "../styles/style_scrap.css";
 import "../styles/style_search.css";
 import "../styles/style_upload.css";
 
+import "../styles/globals.css";
 // CHECK! 공통 CSS외에는 GNB별로 분리해서 전달하기로 함. 각 페이지별로 CSS module 파일 생성할 것
 
 import Layout from "../component/Layout";
 import { useEffect } from "react";
+import {
+  Transition,
+  TransitionGroup,
+  CSSTransition,
+  SwitchTransition,
+} from "react-transition-group";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
+  //
+  const router = useRouter();
+
   useEffect(() => {
     console.log(pageProps);
   }, []);
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <TransitionGroup>
+      {/* https://ichi.pro/ko/react-routerleul-sayonghan-reactui-seullaideu-peiji-css-jeonhwan-61809908639240 */}
+      <CSSTransition
+        key={router.pathname}
+        in={true}
+        className="page"
+        timeout={200}
+      >
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </CSSTransition>
+    </TransitionGroup>
   );
 }
 

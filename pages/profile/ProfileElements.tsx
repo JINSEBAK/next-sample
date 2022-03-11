@@ -16,13 +16,13 @@ export const UserProfileSummary = ({ userInfo, communityInfo }) => {
           <span className="num">1,356</span>
           <span className="txt">피드</span>
         </div>
-        <Link href="#">
+        <Link href="/home">
           <a className="follower">
             <span className="num">189</span>
             <span className="txt">팔로워</span>
           </a>
         </Link>
-        <Link href="#">
+        <Link href="/home">
           <a className="following">
             <span className="num">1,473</span>
             <span className="txt">팔로잉</span>

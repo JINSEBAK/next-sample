@@ -10,6 +10,7 @@ import {
   pinchAction,
   usePinch,
 } from "@use-gesture/react";
+import { useRouter } from "next/router";
 
 // 액션 생성
 const useGesture = createUseGesture([dragAction, pinchAction]);
@@ -21,14 +22,13 @@ export const LogContainer = ({ children }) => {
 interface FamilyBoxProps {
   imgUrl: string;
   name: string;
+  onClickProfile?: (name: string) => void;
 }
-export const FamilyBox = ({ imgUrl, name }: FamilyBoxProps) => {
+export const FamilyBox = ({ imgUrl, name, onClickProfile }: FamilyBoxProps) => {
   return (
-    <Link href="/profile">
-      <a>
-        <img src={`/images/${imgUrl}`} alt={`${name}님의 프로필 이미지`} />
-      </a>
-    </Link>
+    <a onClick={() => onClickProfile(name)}>
+      <img src={`/images/${imgUrl}`} alt={`${name}님의 프로필 이미지`} />
+    </a>
   );
 };
 
@@ -47,6 +47,7 @@ export const LogTitle = ({
 }: LogTitleProps) => {
   //
   const [families, setFamilies] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     // 최대 2개 노출. 이상일 경우 +개수로 노출한다.
@@ -61,16 +62,27 @@ export const LogTitle = ({
     setFamilies(tmpList);
   }, [userInfo]);
 
+  // 프로필 화면으로 이동
+  const onClickProfile = (name: string) => {
+    router.push({
+      pathname: "/profile",
+      query: {
+        name: name,
+      },
+    });
+  };
+
   return (
     <div className="sec_feed_titlebox">
-      <Link href={`/profile?name=${userInfo.name}`}>
-        <a className="sec_fdt_userbox">
-          <img
-            src={userInfo.profileUrl}
-            alt={`${userInfo.name}님의 프로필 이미지`}
-          />
-        </a>
-      </Link>
+      <a
+        className="sec_fdt_userbox"
+        onClick={() => onClickProfile(userInfo.name)}
+      >
+        <img
+          src={userInfo.profileUrl}
+          alt={`${userInfo.name}님의 프로필 이미지`}
+        />
+      </a>
       <dl>
         <dt>
           {/* 뱃지 있는 경우 노출  */}
@@ -105,7 +117,11 @@ export const LogTitle = ({
               {families.map((item, index) => {
                 return (
                   <li key={index}>
-                    <FamilyBox imgUrl={item.imgUrl} name={item.name} />
+                    <FamilyBox
+                      imgUrl={item.imgUrl}
+                      name={item.name}
+                      onClickProfile={() => onClickProfile(item.name)}
+                    />
                   </li>
                 );
               })}
