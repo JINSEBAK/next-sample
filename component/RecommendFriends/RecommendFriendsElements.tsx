@@ -1,16 +1,23 @@
 interface FriendBoxProps {
   name: string;
   imgUrl: string;
-  colorNum: number; // 번호에 따라 테두리 컬러 다르게 적용
+  userType: string;
 }
 
-export const FriendBox = ({ name, imgUrl, colorNum }: FriendBoxProps) => {
+export const FriendBox = ({ name, imgUrl, userType }: FriendBoxProps) => {
   return (
     <>
-      <p className={`slider_mpf_color${colorNum}`}>
+      <p>
         <img src={`/images/${imgUrl}`} alt={`${name}님의 프로필 이미지`} />
       </p>
-      <span>{name}</span>
+      <span>
+        {userType === "B" && (
+          <em>
+            <img src="/images/inc/icon_check_org.svg" alt="브랜드유저 마크" />
+          </em>
+        )}
+        {name}
+      </span>
     </>
   );
 };

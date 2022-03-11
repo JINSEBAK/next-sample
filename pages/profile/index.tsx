@@ -2,7 +2,6 @@ import {
   MainContainer,
   Contents,
   ContentsInner,
-  Toast,
 } from "../../component/Common/CommonUIElements";
 import SubHeader from "../../component/Common/SubHeader";
 import { useState } from "react";
@@ -11,8 +10,12 @@ import SlidePopup from "../../component/Common/SlidePopup";
 import { ProfileMenu } from "../../lib/types/common";
 import { Button, Icon } from "../../component/Common/BasicUIElements";
 import { UserProfileSummary } from "./ProfileElements";
+import { useRouter } from "next/router";
+import ThumbnailFeed from "../../component/Feed/ThumbnailFeed";
 
 const Profile = () => {
+  //
+  const router = useRouter();
   const [open, setOpen] = useState(false);
 
   const onClickOpenClose = () => {
@@ -31,7 +34,10 @@ const Profile = () => {
 
   return (
     <MainContainer>
-      <SubHeader onClickOpenClose={onClickOpenClose} />
+      <SubHeader
+        onClickOpenClose={onClickOpenClose}
+        title={router.query.name}
+      />
       <Contents className="ssg_profile">
         <ContentsInner type="section" className="sec_profile">
           <UserProfileSummary userInfo={1} communityInfo={2} />
@@ -98,9 +104,9 @@ const Profile = () => {
               <span>아코야건강하자</span> 님이 팔로우하고 있습니다.
             </p>
           </div>
-          <div className="profile_follow_btn">
+          <div className="profile_follow_btn btns_wrap">
             <Button
-              className="btn_follow"
+              className="btn btn_solid"
               content="팔로우"
               onClick={onClickFollow}
             />
@@ -110,101 +116,12 @@ const Profile = () => {
           {/* 아이콘 - 여러장 이미지: icon_slide / 영상: icon_video / 장소: icon_place */}
           <ul className="gallery_list">
             <li className="list_item">
-              <Link href="#">
-                <a>
-                  <img
-                    src="/images/test2.jpeg"
-                    className="thumb"
-                    alt="냥냥이님의 이미지"
-                  />
-                  <Icon name="icon_slide" />
-                </a>
-              </Link>
-            </li>
-            <li className="list_item">
-              <Link href="#">
-                <a>
-                  <img
-                    src="/images/test3.jpeg"
-                    className="thumb"
-                    alt="냥냥이님의 이미지"
-                  />
-                  <Icon name="icon_video" />
-                </a>
-              </Link>
-            </li>
-            <li className="list_item">
-              <Link href="#">
-                <a>
-                  <img
-                    src="/images/test4.jpeg"
-                    className="thumb"
-                    alt="냥냥이님의 이미지"
-                  />
-                  <Icon name="icon_video" />
-                  <Icon name="icon_place" />
-                </a>
-              </Link>
-            </li>
-            <li className="list_item">
-              <Link href="#">
-                <a>
-                  <img
-                    src="/images/test5.jpeg"
-                    className="thumb"
-                    alt="냥냥이님의 이미지"
-                  />
-                </a>
-              </Link>
-            </li>
-            <li className="list_item">
-              <Link href="#">
-                <a>
-                  <img
-                    src="/images/test6.jpeg"
-                    className="thumb"
-                    alt="냥냥이님의 이미지"
-                  />
-                  <Icon name="icon_slide" />
-                  <Icon name="icon_place" />
-                </a>
-              </Link>
-            </li>
-            <li className="list_item">
-              <Link href="#">
-                <a>
-                  <img
-                    src="/images/test7.jpeg"
-                    className="thumb"
-                    alt="사료 이미지"
-                  />
-                  <Icon name="icon_video" />
-                </a>
-              </Link>
-            </li>
-            <li className="list_item">
-              <Link href="#">
-                <a>
-                  <img
-                    src="/images/test8.jpeg"
-                    className="thumb"
-                    alt="냥냥이님의 이미지"
-                  />
-                  <Icon name="icon_video" />
-                  <Icon name="icon_place" />
-                </a>
-              </Link>
-            </li>
-            <li className="list_item">
-              <Link href="#">
-                <a>
-                  <img
-                    src="/images/test2.jpeg"
-                    className="thumb"
-                    alt="냥냥이님의 이미지"
-                  />
-                </a>
-              </Link>
+              <ThumbnailFeed
+                imgUrl={["/images/test2.jpeg"]}
+                feedType={"video"}
+                isPlace={true}
+                userNm={"닉네임12345"}
+              />
             </li>
           </ul>
         </ContentsInner>

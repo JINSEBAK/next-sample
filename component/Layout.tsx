@@ -1,16 +1,19 @@
 import { useEffect, useState, Fragment, useLayoutEffect } from "react";
-import { Transition, TransitionGroup } from "react-transition-group";
+import {
+  Transition,
+  TransitionGroup,
+  CSSTransition,
+} from "react-transition-group";
 import { useRouter } from "next/router";
 import { userAgent, scrollEvent } from "../lib/utils";
 import Head from "next/head";
 import classNames from "classnames";
-import { isMobile } from "../lib/common";
 
 const TIMEOUT = 200;
 const getTransitionStyles = {
   entering: {
     position: `absolute`,
-    opacity: 0,
+    opacity: 1,
     transform: `translateX(50px)`,
   },
   entered: {
@@ -20,7 +23,7 @@ const getTransitionStyles = {
   },
   exiting: {
     transition: `opacity ${TIMEOUT}ms ease-in-out, transform ${TIMEOUT}ms ease-in-out`,
-    opacity: 0,
+    opacity: 1,
     transform: `translateX(-50px)`,
   },
 };
@@ -57,20 +60,20 @@ function Layout({ children }) {
         <meta name="format-detection" content="telephone=no" />
       </Head>
       <article className={classNames(router.pathname === "/home" && "pullto")}>
-        {/* <Header bgColor={""} /> */}
-        {children}
-        {/* <TransitionGroup style={{ position: "relative" }}>
-        <Transition key={router.pathname} timeout={500}>
-          {(status) => (
-            <div
-              style={{ ...getTransitionStyles[status] }}
-              className="container"
-            >
-              {children}
-            </div>
-          )}
-        </Transition>
-      </TransitionGroup> */}
+        {/* {children} */}
+        <TransitionGroup style={{ position: "relative" }}>
+          <Transition key={router.pathname} timeout={100}>
+            {children}
+            {/* {(status) => (
+              <div
+                style={{ ...getTransitionStyles[status] }}
+                className="container"
+              >
+                {children}
+              </div>
+            )} */}
+          </Transition>
+        </TransitionGroup>
       </article>
     </Fragment>
   );

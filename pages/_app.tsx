@@ -15,15 +15,15 @@
  * 각 컴포넌트별로 CSS 생성하고 싶을 때는 [name].module.css
  * TODO! 현재 퍼블리싱된 css 파일을 모듈로 사용할 수 있는지 확인!
  */
-import "../styles/globals.css";
+// import "../styles/globals.css";
 
 // CSS import
 import "../styles/reset.css";
 import "../styles/font.css";
 import "../styles/common.css";
 import "../styles/style_home.css";
-import "../styles/style_home1.css";
-import "../styles/style_home2.css";
+// import "../styles/style_home1.css";
+// import "../styles/style_home2.css";
 import "../styles/style_scrap.css";
 import "../styles/style_search.css";
 import "../styles/style_upload.css";

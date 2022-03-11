@@ -24,7 +24,7 @@ interface FamilyBoxProps {
 }
 export const FamilyBox = ({ imgUrl, name }: FamilyBoxProps) => {
   return (
-    <Link href="#">
+    <Link href="/profile">
       <a>
         <img src={`/images/${imgUrl}`} alt={`${name}님의 프로필 이미지`} />
       </a>
@@ -45,9 +45,25 @@ export const LogTitle = ({
   isExpand,
   onClickExpand,
 }: LogTitleProps) => {
+  //
+  const [families, setFamilies] = useState([]);
+
+  useEffect(() => {
+    // 최대 2개 노출. 이상일 경우 +개수로 노출한다.
+    const MAX_COUNT = 2;
+    let tmpList = [];
+
+    userInfo.family.forEach((item, index) => {
+      if (index < MAX_COUNT) {
+        tmpList.push(item);
+      }
+    });
+    setFamilies(tmpList);
+  }, [userInfo]);
+
   return (
     <div className="sec_feed_titlebox">
-      <Link href="#">
+      <Link href={`/profile?name=${userInfo.name}`}>
         <a className="sec_fdt_userbox">
           <img
             src={userInfo.profileUrl}
@@ -59,7 +75,7 @@ export const LogTitle = ({
         <dt>
           {/* 뱃지 있는 경우 노출  */}
           <em>
-            <img src="/images/badge_test.svg" alt="뱃지" />
+            <img src="/images/inc/test_badge.svg" alt="뱃지" />
           </em>{" "}
           {userInfo.name}
         </dt>
@@ -84,11 +100,22 @@ export const LogTitle = ({
       >
         {/* <Button className="fdt_familybox_btn"></Button> */}
         <ul>
-          {userInfo.family.map((item, index) => (
-            <li key={index}>
-              <FamilyBox imgUrl={item.imgUrl} name={item.name} />
-            </li>
-          ))}
+          {families.length > 0 && (
+            <>
+              {families.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <FamilyBox imgUrl={item.imgUrl} name={item.name} />
+                  </li>
+                );
+              })}
+              {userInfo.family.length > 3 && (
+                <li className="sec_ffplus_btn">
+                  <Button content="+3" />
+                </li>
+              )}
+            </>
+          )}
         </ul>
       </div>
     </div>

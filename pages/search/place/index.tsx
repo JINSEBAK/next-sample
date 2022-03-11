@@ -12,7 +12,7 @@ import {
   CustomOverlayMap,
 } from "react-kakao-maps-sdk";
 import { BottomSheet } from "react-spring-bottom-sheet";
-import classNames from "classnames";
+import { useRouter } from "next/router";
 import "react-spring-bottom-sheet/dist/style.css";
 
 const place = {
@@ -540,6 +540,7 @@ const PlaceMapPage = () => {
   const [snap, setSnap] = useState(false);
 
   const sheetRef = useRef(null);
+  const router = useRouter();
 
   // 샘플 데이터 생성
   useLayoutEffect(() => {
@@ -583,6 +584,10 @@ const PlaceMapPage = () => {
     setSnap(!snap);
   };
 
+  const onClickDetail = () => {
+    router.push("/search/place/detail");
+  };
+
   return (
     <MainContainer>
       <Script
@@ -600,7 +605,11 @@ const PlaceMapPage = () => {
         >
           <Map
             center={{ lat: place.lat, lng: place.lng }}
-            style={{ position: "relative", width: "100vw", height: "100vh" }}
+            style={{
+              position: "relative",
+              width: "100vw",
+              height: "100vh",
+            }}
             onCreate={setMap}
             level={10}
           >
@@ -659,23 +668,25 @@ const PlaceMapPage = () => {
         ]}
         expandOnContentDrag={true}
       >
-        <ul style={{ padding: "16px" }}>
-          {[...Array(10)].map((item, index) => {
-            return (
-              <li key={index}>
-                <div
-                  style={{
-                    border: "1px solid #eee",
-                    padding: "16px",
-                    marginBottom: "8px",
-                  }}
-                >
-                  {index}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+        <>
+          <ul style={{ padding: "16px" }}>
+            {[...Array(10)].map((item, index) => {
+              return (
+                <li key={index} onClick={onClickDetail}>
+                  <div
+                    style={{
+                      border: "1px solid #eee",
+                      padding: "16px",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    {index}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </>
       </BottomSheet>
     </MainContainer>
   );
