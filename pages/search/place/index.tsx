@@ -657,9 +657,9 @@ const PlaceMapPage = () => {
       </Contents>
 
       <BottomSheet
-        open
-        ref={sheetRef}
+        open={false}
         skipInitialTransition
+        ref={sheetRef}
         defaultSnap={({ maxHeight }) => maxHeight / 2 - 15}
         snapPoints={({ maxHeight }) => [
           maxHeight - maxHeight / 20,
@@ -669,6 +669,15 @@ const PlaceMapPage = () => {
         expandOnContentDrag={true}
       >
         <>
+          <Button
+            onClick={() => {
+              sheetRef.current.snapTo(({ snapPoints }) =>
+                Math.max(...snapPoints)
+              );
+            }}
+          >
+            -------
+          </Button>
           <ul style={{ padding: "16px" }}>
             {[...Array(10)].map((item, index) => {
               return (

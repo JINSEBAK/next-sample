@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { Button, Icon } from "./BasicUIElements";
 import classNames from "classnames";
+import { Transition, CSSTransition } from "react-transition-group";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 // Container --------------------------------------------------
 interface ChildrenProps {
@@ -13,8 +16,41 @@ interface ContainerProps {
   children: JSX.Element | JSX.Element[];
 }
 export const MainContainer = ({ children }: ChildrenProps) => {
-  return <>{children}</>;
+  const router = useRouter();
+  return (
+    <article className={classNames(router.pathname === "/home" && "pullto")}>
+      {children}
+    </article>
+  );
 };
+
+export const TransitionContainer2 = ({ children }: ChildrenProps) => {
+  const router = useRouter();
+  return (
+    <Transition
+      key={router.pathname}
+      timeout={200}
+      in={true}
+      mountOnEnter={true}
+      unmountOnExit={true} // 종료 후 언마운드 default: false
+      appear
+    >
+      {(status) => {
+        return (
+          <article className={classNames(`page page-${status}`)}>
+            {children}
+          </article>
+        );
+      }}
+    </Transition>
+  );
+};
+
+export const TransitionContainer = ({ children }: ChildrenProps) => {
+  return <article>{children}</article>;
+};
+
+export const SlideContainer = () => {};
 
 export const Contents = ({ className, children }: ContainerProps) => {
   return (

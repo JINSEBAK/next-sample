@@ -9,7 +9,16 @@ import {
   SearchPlaceItem,
 } from "../../../component/search/SearchResultElements";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
-import { useState, useEffect, useRef } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useLayoutEffect,
+  createRef,
+} from "react";
+import { useDebounce } from "../../../hooks";
+import ResultFeed from "../../../component/search/ResultFeed";
 
 const KAKAO_PLACE_CATEGORY = {
   MT1: "대형마트",
@@ -41,18 +50,18 @@ const SamplePage = () => {
   const [marker, setMarker] = useState({ lat: 0, lng: 0 });
   const [page, setPage] = useState(1);
   const [position, setPosition] = useState({ lat: 37.57182, lng: 126.983321 });
-  const scrollRef = useRef(null);
+  const scrollRef = useRef(null); // 스크롤 박스
+
+  const itemRefs = useRef([]);
 
   useEffect(() => {
     if (!map) return;
     const ps = new window.kakao.maps.services.Places();
     if (keyword.length > 0) {
       ps.keywordSearch(keyword, (data, status, pagination) => {
-        console.log(pagination);
         if (status === window.kakao.maps.services.Status.OK) {
           setSearchResult(data);
           setMarker({ lat: data[0].y, lng: data[0].x });
-          console.log(pagination.current);
           setPage(pagination.current);
           scrollRef.current.scrollTop = 0;
         }
@@ -62,7 +71,6 @@ const SamplePage = () => {
         "CE7,CS2,SW8",
         (data, status, pagination) => {
           if (status === window.kakao.maps.services.Status.OK) {
-            console.log(data);
             setSearchResult(data);
           }
         },
@@ -94,17 +102,32 @@ const SamplePage = () => {
   };
 
   // 장소 검색 결과 스크롤
-  const onScrollList = (e) => {
-    // 60: 버튼 한개 높이만큼
-    if (
-      scrollRef.current.scrollHeight - 60 <=
-      scrollRef.current.scrollTop + scrollRef.current.clientHeight
-    ) {
-      // 스크롤 마지막이니 더 불러와요
-      console.log("데이터 더 불러와요");
-      setPage(page + 1);
+  // const onScrollList = useCallback((e) => {
+  //   console.log(e);
+  // }, []);
+  const stopScroll = useCallback((e) => {
+    console.log("멈춤");
+    console.log(scrollRef);
+  }, []);
+
+  const debounceScroll = useDebounce(stopScroll, 1500);
+
+  const scrollDetectHandler = useCallback((...e) => {
+    // 스크롤 위, 아래 감지
+    //throttleScroll(...e);
+    // 스크롤 멈춤 감지 (디바운스가 마지막 그룹의 이벤트를 노티해줌)
+    debounceScroll(...e);
+  }, []);
+
+  useLayoutEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.addEventListener("scroll", scrollDetectHandler);
+      return () => {
+        if (!scrollRef.current) return;
+        scrollRef.current.removeEventListener("scroll", scrollDetectHandler);
+      };
     }
-  };
+  });
 
   // 목록에서 장소 선택
   const onClickItem = (place) => {
@@ -112,6 +135,12 @@ const SamplePage = () => {
     map.panTo(moveLatLon);
 
     setMarker({ lat: place.y, lng: place.x });
+  };
+
+  // map안에서 ref생성
+  const addToRefs = (el) => {
+    itemRefs.current.push(el);
+    console.log(itemRefs);
   };
 
   return (
@@ -152,7 +181,7 @@ const SamplePage = () => {
             </Map>
             {searchResult.length > 0 && (
               <div className="s_place_result" style={{ position: "relative" }}>
-                <ul onScroll={onScrollList} ref={scrollRef}>
+                <ul ref={scrollRef}>
                   {searchResult.map((place, index) => {
                     return (
                       <li key={index}>
@@ -161,6 +190,7 @@ const SamplePage = () => {
                           address={place.address_name}
                           placeInfo={place}
                           onClickItem={onClickItem}
+                          ref={addToRefs}
                         />
                       </li>
                     );

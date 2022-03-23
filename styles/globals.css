@@ -1,13 +1,37 @@
-.page-enter {
+/** CSS Transition **/
+
+.slide.enter {
   transform: translate3d(100%, 0, 0);
   position: absolute;
 }
-
-.page-exit {
-  transform: translate3d(-100%, 0, 0);
+.slide.exit {
+  transform: translate3d(0, 0, 0);
 }
 
-.page-enter-active {
+.slide.enter.enter-active {
   transform: translate3d(0, 0, 0);
-  transition: all 800ms ease-in-out;
+  transition: all 600ms;
+}
+
+.slide.exit.exit-active {
+  transform: translate3d(100%, 0, 0);
+  transition: opacity 600ms;
+}
+
+/**Transition 사용 시**/
+.page {
+  transition: all 200ms;
+}
+.page-exiting {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+.page-exited {
+  transform: translate3d(100%, 0, 0);
+}
+.page-entering {
+  transform: translate3d(100%, 0, 0);
+}
+.page-entered {
+  transform: translate3d(0, 0, 0);
 }

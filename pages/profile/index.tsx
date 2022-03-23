@@ -2,6 +2,7 @@ import {
   MainContainer,
   Contents,
   ContentsInner,
+  TransitionContainer,
 } from "../../component/Common/CommonUIElements";
 import SubHeader from "../../component/Common/SubHeader";
 import { useState } from "react";
@@ -33,7 +34,7 @@ const Profile = () => {
   };
 
   return (
-    <MainContainer>
+    <TransitionContainer>
       <SubHeader
         onClickOpenClose={onClickOpenClose}
         title={router.query.name}
@@ -146,7 +147,7 @@ const Profile = () => {
           />
         }
       />
-    </MainContainer>
+    </TransitionContainer>
   );
 };
 

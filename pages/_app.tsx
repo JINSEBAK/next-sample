@@ -46,19 +46,12 @@ function MyApp({ Component, pageProps }) {
     console.log(pageProps);
   }, []);
   return (
-    <TransitionGroup>
+    <>
       {/* https://ichi.pro/ko/react-routerleul-sayonghan-reactui-seullaideu-peiji-css-jeonhwan-61809908639240 */}
-      <CSSTransition
-        key={router.pathname}
-        in={true}
-        className="page"
-        timeout={200}
-      >
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </CSSTransition>
-    </TransitionGroup>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   );
 }
 

@@ -26,3 +26,24 @@ export function useDoubleClick(onClickHandle, onDoubleClickHome, delay = 200) {
 
   return () => setClick((prev) => prev + 1);
 }
+
+export function useDebounce(func, wait) {
+  const [id, setId] = useState(null);
+  useEffect(() => {
+    return () => {
+      clearTimeout(id);
+    };
+  }, []);
+
+  return (...args) => {
+    if (id) {
+      clearTimeout(id);
+    }
+    setId(
+      setTimeout(() => {
+        setId(null);
+        func(...args);
+      }, wait)
+    );
+  };
+}

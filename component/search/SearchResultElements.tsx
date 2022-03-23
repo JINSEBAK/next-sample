@@ -1,4 +1,5 @@
 import { Button } from "../Common/BasicUIElements";
+import { useRef, forwardRef } from "react";
 
 export const SearchResultContainer = ({ children }) => {
   return (
@@ -17,19 +18,15 @@ interface PlaceItemProps {
   onClickItem?: (place) => void;
 }
 
-export const SearchPlaceItem = ({
-  name,
-  address,
-  placeInfo,
-  onClickItem,
-}: PlaceItemProps) => {
+export const SearchPlaceItem = forwardRef((props: PlaceItemProps, ref) => {
+  const { name, address, placeInfo, onClickItem } = props;
   return (
-    <Button onClick={() => onClickItem(placeInfo)}>
+    <Button onClick={() => onClickItem(placeInfo)} ref={ref}>
       <span className="name">{name}</span>
       <span className="address">{address}</span>
     </Button>
   );
-};
+});
 
 export const User = () => {
   return <div>user</div>;
