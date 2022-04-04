@@ -11,9 +11,13 @@ import {
   MarkerClusterer,
   CustomOverlayMap,
 } from "react-kakao-maps-sdk";
-import { BottomSheet } from "react-spring-bottom-sheet";
 import { useRouter } from "next/router";
+// import { BottomSheet } from "react-spring-bottom-sheet";
 import "react-spring-bottom-sheet/dist/style.css";
+
+import Sheet, { SheetRef } from "react-modal-sheet";
+
+import BottomSheet from "../../../component/BottomSheet";
 
 const place = {
   lat: 37.571803,
@@ -539,8 +543,13 @@ const PlaceMapPage = () => {
   const [open, setOpen] = useState(true); // 피드 팝업
   const [snap, setSnap] = useState(false);
 
-  const sheetRef = useRef(null);
+  //const sheetRef = useRef(null);
   const router = useRouter();
+
+  const sheetRef = useRef<SheetRef>();
+  // 이동
+  const snapTo = (i: number) => sheetRef.current?.snapTo(i);
+  const disableOnClose = () => {};
 
   // 샘플 데이터 생성
   useLayoutEffect(() => {
@@ -656,8 +665,10 @@ const PlaceMapPage = () => {
         </div>
       </Contents>
 
-      <BottomSheet
-        open={false}
+      <BottomSheet draggable={true} />
+
+      {/* <BottomSheet
+        open={true}
         skipInitialTransition
         ref={sheetRef}
         defaultSnap={({ maxHeight }) => maxHeight / 2 - 15}
@@ -696,7 +707,7 @@ const PlaceMapPage = () => {
             })}
           </ul>
         </>
-      </BottomSheet>
+      </BottomSheet> */}
     </MainContainer>
   );
 };

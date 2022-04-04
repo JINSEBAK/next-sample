@@ -138,35 +138,6 @@ const ScrapDetail = () => {
         }
       />
       <Contents className="scrap">
-        {/* <Selecto
-          dragContainer={".scrap_img_list"}
-          selectByClick={true}
-          continueSelect={true}
-          selectableTargets={[".selectable-item"]}
-          selectFromInside={true}
-          hitRate={30} // selected되는 면적비율
-          ratio={0}
-          onSelect={(e) => onSelect(e)}
-        />
-
-        <ul className="scrap_img_list">
-          {SAMPLE_DATAS.map((item, index) => (
-            <li key={index} className="selectable-item" id={String(item.id)}>
-              <Button>
-                <input
-                  type="checkbox"
-                  className="scrap_chk_inp"
-                  defaultChecked={isChecked(String(item.id))}
-                />
-                <label className="scrap_chk_label">
-                  <em />
-                </label>
-                <img src="/images/test7.jpeg" alt="이미지" />
-              </Button>
-            </li>
-          ))}
-        </ul> */}
-
         <SelectableGroup
           className="main"
           clickClassName="tick"

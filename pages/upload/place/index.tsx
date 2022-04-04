@@ -105,10 +105,7 @@ const SamplePage = () => {
   // const onScrollList = useCallback((e) => {
   //   console.log(e);
   // }, []);
-  const stopScroll = useCallback((e) => {
-    console.log("멈춤");
-    console.log(scrollRef);
-  }, []);
+  const stopScroll = useCallback((e) => {}, []);
 
   const debounceScroll = useDebounce(stopScroll, 1500);
 
